@@ -11,7 +11,7 @@ public class ClientExecutionManager {
     private final LocalHistory history;
     private final Terminal terminal;
     private final CommandReader commandReader;
-    private final LocalCommandsManager localCommandsManager;
+    private final LocalCommandManager localCommandManager;
     private final RequestsManager requestsManager;
     private final ClientConnector connector;
 
@@ -20,7 +20,7 @@ public class ClientExecutionManager {
         this.terminal = new Terminal();
         this.commandReader = new CommandReader(terminal);
         this.requestsManager = new RequestsManager(terminal);
-        this.localCommandsManager = new LocalCommandsManager(terminal, history, requestsManager.getPrototypesNames());
+        this.localCommandManager = new LocalCommandManager(terminal, history);
         this.connector = new ClientConnector();
     }
 
@@ -37,7 +37,7 @@ public class ClientExecutionManager {
     }
 
     private String executeCommand(String commandName, String[] commandArgs) {
-        if (localCommandsManager.contains(commandName))
+        if (localCommandManager.contains(commandName))
             return executeCommandOnClient(commandName, commandArgs);
         else if (requestsManager.contains(commandName))
             return executeCommandOnServer(commandName, commandArgs);
@@ -46,7 +46,7 @@ public class ClientExecutionManager {
     }
 
     private String executeCommandOnClient(String commandName, String[] commandArgs) {
-        Command command = localCommandsManager.clonePrototype(commandName);
+        Command command = localCommandManager.clonePrototype(commandName);
         history.addCommand(command);
         command.setArgs(commandArgs);
         command.execute();

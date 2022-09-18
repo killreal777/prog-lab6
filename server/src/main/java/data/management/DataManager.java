@@ -1,11 +1,10 @@
 package data.management;
 
-import io.Terminal;
-import subject.model.Organization;
 import data.xml.model.CollectionInfo;
 import data.xml.model.DataRoot;
+import io.Terminal;
+import subject.model.Organization;
 
-import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.PriorityQueue;
@@ -32,7 +31,7 @@ public class DataManager {
     public void saveData() throws FileNotFoundException {
         try {
             jaxbConverter.writeXml(dataRoot);
-        } catch (JAXBException e) {
+        } catch (jakarta.xml.bind.JAXBException e) {
             e.printStackTrace();
         }
     }

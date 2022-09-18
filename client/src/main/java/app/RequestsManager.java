@@ -3,6 +3,8 @@ package app;
 import abstractions.prototypes.PrototypesManager;
 import abstractions.requests.CommandRequest;
 import io.Terminal;
+import register.CommandRecord;
+import register.CommandsChecker;
 import requestes.creation.AddIfMaxRequest;
 import requestes.creation.AddRequest;
 import requestes.creation.RemoveByAddressRequest;
@@ -18,7 +20,8 @@ public class RequestsManager extends PrototypesManager<CommandRequest> {
     public RequestsManager(Terminal terminal) {
         this.terminal = terminal;
         definePrototypes();
-        // this.history = new CommandHistory();
+        CommandsChecker.check(CommandRecord.CommandType.SERVER, getPrototypesNameList(), "RequestsManager");
+        CommandsChecker.check(CommandRecord.CommandType.SERVER, getPrototypesNameList(), "RequestsManager");
     }
 
     @Override

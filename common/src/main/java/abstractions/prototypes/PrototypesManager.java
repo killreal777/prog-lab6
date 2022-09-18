@@ -1,5 +1,6 @@
 package abstractions.prototypes;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class PrototypesManager<T extends CloneablePrototype> {
@@ -23,10 +24,7 @@ public abstract class PrototypesManager<T extends CloneablePrototype> {
         return (T) prototypesMap.get(prototypeName).clone();
     }
 
-    public String getPrototypesNames() {
-        String out = "";
-        for (String name : prototypesMap.keySet())
-            out = out + name + '\n';
-        return out;
+    protected ArrayList<String> getPrototypesNameList() {
+        return new ArrayList<>(prototypesMap.keySet());
     }
 }

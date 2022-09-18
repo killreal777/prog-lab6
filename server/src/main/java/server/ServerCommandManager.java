@@ -10,14 +10,16 @@ import commands.simple.arged.FilterStartsWithName;
 import commands.simple.arged.RemoveByID;
 import commands.simple.argless.*;
 import data.management.DataManager;
+import register.CommandRecord;
+import register.CommandsChecker;
 
-public class ServerCommandsManager extends PrototypesManager<ServerCommand> {
+public class ServerCommandManager extends PrototypesManager<ServerCommand> {
     private final DataManager dataManager;
 
-    public ServerCommandsManager(DataManager dataManager) {
+    public ServerCommandManager(DataManager dataManager) {
         this.dataManager = dataManager;
         definePrototypes();
-
+        CommandsChecker.check(CommandRecord.CommandType.SERVER, getPrototypesNameList(), "ServerCommandManager");
     }
 
     @Override
@@ -38,6 +40,6 @@ public class ServerCommandsManager extends PrototypesManager<ServerCommand> {
         addPrototype("head", new Head(dataManager));
         addPrototype("print_ascending", new PrintAscending(dataManager));
         addPrototype("info", new Info(dataManager));
-        addPrototype("save", new Save(dataManager));
+        //addPrototype("save", new Save(dataManager));
     }
 }

@@ -7,10 +7,10 @@ import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
 
 public class ServerExecutionManager {
-    private final ServerCommandsManager commandsManager;
+    private final ServerCommandManager commandsManager;
 
     public ServerExecutionManager(DataManager dataManager) {
-        this.commandsManager = new ServerCommandsManager(dataManager);
+        this.commandsManager = new ServerCommandManager(dataManager);
     }
 
     public String executeCommand(CommandRequest request) {
