@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data>
+    <collection_info>
+        <collection_type>PriorityQueue&lt;Organization&gt;</collection_type>
+        <initialization_date>2022-08-29T18:43:52.638</initialization_date>
+        <elements_amount>1</elements_amount>
+    </collection_info>
+    <collection>
+        <organization>
+            <id>1</id>
+            <name>Lesha Inc</name>
+            <coordinates>
+                <x>1920</x>
+                <y>-1080</y>
+            </coordinates>
+            <creation_date>2022-08-29T18:45:07.339</creation_date>
+            <annual_turnover>300</annual_turnover>
+            <full_name>Alexey Abramov Incorparated</full_name>
+            <employees_count>3</employees_count>
+            <type>COMMERCIAL</type>
+            <official_address>
+                <zip_code>234197</zip_code>
+                <town>
+                    <x>123</x>
+                    <y>456</y>
+                    <z>789.0</z>
+                    <name>Naberezhnye Chelny</name>
+                </town>
+            </official_address>
+        </organization>
+    </collection>
+</data>
