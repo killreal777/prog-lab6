@@ -12,7 +12,6 @@ import java.nio.channels.SocketChannel;
 public class ClientConnector {
     private SocketChannel clientSocketChannel;
 
-
     private void connect() throws IOException {
         this.clientSocketChannel = SocketChannel.open();
         SocketAddress serverSocketAddress = new InetSocketAddress("localhost", 7770);
@@ -31,7 +30,7 @@ public class ClientConnector {
 
     private String getResponse() throws IOException, ClassNotFoundException {
         ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024);
-        //clientSocketChannel.read(buffer);
+        // clientSocketChannel.read(buffer);
         clientSocketChannel.socket().getInputStream().read(buffer.array());
         System.out.println("CLIENT RECEIVED RESPONSE");
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(buffer.array());
@@ -40,7 +39,6 @@ public class ClientConnector {
         objectInputStream.close();
         return response;
     }
-
 
     public String interact(CommandRequest request) throws IOException, ClassNotFoundException {
         connect();

@@ -1,12 +1,10 @@
 package requestes.creation;
 
-
 import creators.OrganizationCreator;
 import exception.ArgumentTypeException;
 import io.Terminal;
 import abstractions.requests.CreationCommandRequest;
 import subject.model.Organization;
-
 
 public class UpdateRequest extends CreationCommandRequest<Organization> {
 

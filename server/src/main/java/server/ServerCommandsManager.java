@@ -13,6 +13,7 @@ import data.management.DataManager;
 
 public class ServerCommandsManager extends PrototypesManager<ServerCommand> {
     private final DataManager dataManager;
+
     public ServerCommandsManager(DataManager dataManager) {
         this.dataManager = dataManager;
         definePrototypes();

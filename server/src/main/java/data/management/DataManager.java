@@ -1,6 +1,5 @@
 package data.management;
 
-
 import io.Terminal;
 import subject.model.Organization;
 import data.xml.model.CollectionInfo;
@@ -11,19 +10,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.PriorityQueue;
 
-
-/**
- * Class for managing data collection in object data.model form
-
- * Provides data collection and some tools for working with it
- */
-
-
 public class DataManager {
     private final DataJaxbConverter jaxbConverter;
     private final IdGenerator idGenerator;
     private DataRoot dataRoot;
-
 
     public DataManager(Terminal terminal) {
         this.jaxbConverter = new DataJaxbConverter(terminal);
@@ -35,13 +25,10 @@ public class DataManager {
         try {
             this.dataRoot = jaxbConverter.readXml();
             idGenerator.loadIdInfo(dataRoot.getCollectionRoot().getCollection());
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
     }
 
-
-    /**
-     * Save collection to data file
-     */
     public void saveData() throws FileNotFoundException {
         try {
             jaxbConverter.writeXml(dataRoot);
@@ -49,7 +36,6 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-
 
     /**
      * Provide data collection

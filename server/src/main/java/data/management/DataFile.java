@@ -5,20 +5,15 @@ import io.TextFormatter;
 
 import java.io.*;
 
-
 /**
  * Class for interaction with data file
  *
- * Checks file permissions
- * Allows to change (reenter) data file
- * Provides tools for reading and writing
+ * Checks file permissions Allows to change (reenter) data file Provides tools for reading and writing
  */
-
 
 public class DataFile {
     private final Terminal terminal;
     private File file;
-
 
     public DataFile(Terminal terminal) {
         this.terminal = terminal;
@@ -35,7 +30,6 @@ public class DataFile {
         return reenter(message, options);
     }
 
-
     /**
      * Check and set data file by file path
      */
@@ -49,7 +43,6 @@ public class DataFile {
         checkReadingPermission();
         checkWritingPermission();
     }
-
 
     private void checkExisting() {
         if (file.exists() && file.isFile())
@@ -69,7 +62,7 @@ public class DataFile {
         String filePath = reenter(message, options);
         file = new File(filePath);
         checkExisting();
-        checkReadingPermission();                  // in case of exception user must reset file path
+        checkReadingPermission(); // in case of exception user must reset file path
     }
 
     private void checkWritingPermission() {
@@ -80,16 +73,14 @@ public class DataFile {
         String input = reenter(message, options);
         if (input.equals(""))
             return;
-        setFileByPath(input);             // resetting file path in case of not empty reenter
+        setFileByPath(input); // resetting file path in case of not empty reenter
     }
-
 
     private String reenter(String message, String options) {
         String text = message + "\n" + options;
         String invitationMessage = TextFormatter.format(text, TextFormatter.Format.RED);
         return terminal.readLineEntire(invitationMessage);
     }
-
 
     /**
      * Create FileReader for data file

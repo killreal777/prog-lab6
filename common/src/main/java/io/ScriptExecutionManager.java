@@ -1,6 +1,5 @@
 package io;
 
-
 import exception.MessagedRuntimeException;
 
 import java.io.File;
@@ -9,22 +8,18 @@ import java.io.Serializable;
 import java.util.Scanner;
 import java.util.Stack;
 
-
 /**
  * Class for managing scripts execution
  */
-
 
 public class ScriptExecutionManager {
     private final Stack<String> executingScripts;
     private final ScannerManager scannerManager;
 
-
     ScriptExecutionManager(ScannerManager scannerManager) {
         this.executingScripts = new Stack<>();
         this.scannerManager = scannerManager;
     }
-
 
     void createScriptScanner(String fileName) throws FileNotFoundException {
         File scriptFile = new File(fileName);
@@ -43,7 +38,6 @@ public class ScriptExecutionManager {
         }
     }
 
-
     void checkIfScriptIsEnded() {
         if (IsScriptEnded()) {
             executingScripts.pop();
@@ -54,7 +48,6 @@ public class ScriptExecutionManager {
     private boolean IsScriptEnded() {
         return isScriptExecuting() && !scannerManager.getCurrentScanner().hasNext();
     }
-
 
     boolean isScriptExecuting() {
         return !executingScripts.isEmpty();

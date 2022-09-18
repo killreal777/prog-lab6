@@ -5,15 +5,13 @@ import io.Terminal;
 import io.TextFormatter;
 import subject.model.Organization;
 
-
 public class AddIfMax extends Add {
     public AddIfMax(DataManager dataManager) {
         super(dataManager);
         this.name = "add_if_max {element}";
-        this.description = "добавить новый элемент в коллекцию, " +
-                "если его значение превышает значение наибольшего элемента этой коллекции";
+        this.description = "добавить новый элемент в коллекцию, "
+                + "если его значение превышает значение наибольшего элемента этой коллекции";
     }
-
 
     @Override
     public void execute() {

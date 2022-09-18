@@ -1,6 +1,5 @@
 package commands.simple.argless;
 
-
 import commands.abstractions.ServerCommand;
 import data.management.DataManager;
 

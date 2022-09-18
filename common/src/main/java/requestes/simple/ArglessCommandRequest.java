@@ -8,9 +8,7 @@ public class ArglessCommandRequest extends CommandRequest {
         super(commandName);
     }
 
-
     public void setCommandArgs(String[] args) {
         checkArgumentsAmount(args, 0);
     }
 }
-

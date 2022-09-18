@@ -3,7 +3,6 @@ package commands.local;
 import abstractions.commands.Command;
 import app.LocalHistory;
 
-
 public class History extends Command {
     private final LocalHistory history;
 

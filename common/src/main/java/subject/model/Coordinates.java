@@ -1,23 +1,21 @@
 package subject.model;
 
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
-
 @XmlRootElement(name = "coordinates")
 public class Coordinates implements Serializable {
-    private int x;      // > -535
-    private int y;      // <= 630
+    private int x; // > -535
+    private int y; // <= 630
 
     public Coordinates(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public Coordinates() {}
-
+    public Coordinates() {
+    }
 
     @XmlElement
     public int getX() {
@@ -28,7 +26,6 @@ public class Coordinates implements Serializable {
     public int getY() {
         return y;
     }
-
 
     public void setX(int x) {
         if (x <= -535)
@@ -41,7 +38,6 @@ public class Coordinates implements Serializable {
             throw new FieldDefinitionException("Значение координаты Y организации должно быть меньше или равно 630");
         this.y = y;
     }
-
 
     @Override
     public String toString() {

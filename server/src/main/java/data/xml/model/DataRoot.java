@@ -4,16 +4,14 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 @XmlRootElement(name = "data")
-@XmlType(propOrder = {"collectionInfo", "collectionRoot"})
+@XmlType(propOrder = { "collectionInfo", "collectionRoot" })
 public class DataRoot {
     private CollectionInfo collectionInfo = new CollectionInfo();
     private CollectionRoot collectionRoot = new CollectionRoot();
 
-
-    public DataRoot() {}
-
+    public DataRoot() {
+    }
 
     @XmlElement(name = "collection")
     public CollectionRoot getCollectionRoot() {
@@ -24,8 +22,6 @@ public class DataRoot {
     public CollectionInfo getCollectionInfo() {
         return collectionInfo;
     }
-
-
 
     public void setCollectionRoot(CollectionRoot collectionRoot) {
         this.collectionRoot = collectionRoot;

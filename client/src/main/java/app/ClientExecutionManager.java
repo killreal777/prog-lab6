@@ -7,7 +7,6 @@ import io.Terminal;
 
 import java.io.IOException;
 
-
 public class ClientExecutionManager {
     private final LocalHistory history;
     private final Terminal terminal;
@@ -15,7 +14,6 @@ public class ClientExecutionManager {
     private final LocalCommandsManager localCommandsManager;
     private final RequestsManager requestsManager;
     private final ClientConnector connector;
-
 
     public ClientExecutionManager() {
         this.history = new LocalHistory();
@@ -25,7 +23,6 @@ public class ClientExecutionManager {
         this.localCommandsManager = new LocalCommandsManager(terminal, history, requestsManager.getPrototypesNames());
         this.connector = new ClientConnector();
     }
-
 
     public void executeNextCommand() {
         try {

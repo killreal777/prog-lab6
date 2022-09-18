@@ -4,7 +4,6 @@ import commands.abstractions.ServerCommand;
 import data.management.DataManager;
 import subject.model.Organization;
 
-
 public class Show extends ServerCommand {
     public Show(DataManager dataManager) {
         super(dataManager);

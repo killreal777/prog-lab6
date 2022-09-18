@@ -5,7 +5,6 @@ import io.Terminal;
 import abstractions.requests.CreationCommandRequest;
 import subject.model.Address;
 
-
 public class RemoveByAddressRequest extends CreationCommandRequest<Address> {
 
     public RemoveByAddressRequest(Terminal terminal) {

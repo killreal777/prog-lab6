@@ -2,20 +2,16 @@ package app;
 
 import abstractions.commands.Command;
 
-
 /**
  * Class for storing last 10 executed Commands
  */
 
-
 public class LocalHistory {
     private final Command[] historyCommands;
-
 
     LocalHistory() {
         this.historyCommands = new Command[10];
     }
-
 
     public void addCommand(Command command) {
         shiftCommandsOnePositionToThePast();
@@ -27,7 +23,6 @@ public class LocalHistory {
             historyCommands[i] = historyCommands[i - 1];
         historyCommands[0] = null;
     }
-
 
     public String toString() {
         if (historyCommands[0] == null)
@@ -46,8 +41,8 @@ public class LocalHistory {
         return out;
     }
 
-    private String commandToString(int commandIndexInArray) {    // for beautiful history output
-        int stepIntoThePast = commandIndexInArray + 1;    // 1 - the previous, 2 - the command before the previous...
+    private String commandToString(int commandIndexInArray) { // for beautiful history output
+        int stepIntoThePast = commandIndexInArray + 1; // 1 - the previous, 2 - the command before the previous...
         Command command = historyCommands[commandIndexInArray];
         String commandName = command.toString().split(" ")[0];
         return String.format("-%2d: %s", stepIntoThePast, commandName);

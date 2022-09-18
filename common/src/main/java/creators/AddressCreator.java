@@ -4,24 +4,24 @@ import io.Terminal;
 import subject.model.Address;
 import subject.model.FieldDefinitionException;
 
-
 /**
  * Class for creating and validation Addresses
  */
 
-
 public class AddressCreator extends Creator<Address> {
     private final LocationCreator locationCreator;
-    private enum AddressArgument {ZIP_CODE, TOWN}
-    private AddressArgument lastSetArgument;
 
+    private enum AddressArgument {
+        ZIP_CODE, TOWN
+    }
+
+    private AddressArgument lastSetArgument;
 
     public AddressCreator(Terminal terminal) {
         super(terminal);
         this.locationCreator = new LocationCreator(terminal);
         this.lastSetArgument = AddressArgument.TOWN;
     }
-
 
     @Override
     protected Address createNewInstance() {
@@ -31,12 +31,13 @@ public class AddressCreator extends Creator<Address> {
     @Override
     protected void defineFields() throws FieldDefinitionException {
         switch (lastSetArgument) {
-            case TOWN: defineZipCode();
-            case ZIP_CODE: defineTown();
+        case TOWN:
+            defineZipCode();
+        case ZIP_CODE:
+            defineTown();
         }
         // break statement MUST NOT be here
     }
-
 
     private void defineZipCode() {
         String requirements = formatRequirements("String, not null, length <= 16");

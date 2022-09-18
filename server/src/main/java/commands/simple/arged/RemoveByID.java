@@ -6,7 +6,6 @@ import exception.MessagedRuntimeException;
 import io.TextFormatter;
 import subject.model.Organization;
 
-
 public class RemoveByID extends ArguedServerCommand<Integer> {
     public RemoveByID(DataManager dataManager) {
         super(dataManager);
@@ -26,7 +25,6 @@ public class RemoveByID extends ArguedServerCommand<Integer> {
         }
     }
 
-
     private Organization findMatchingOrganization(Integer id) throws MessagedRuntimeException {
         for (Organization organization : dataManager.getCollection()) {
             if (organization.getId().equals(id))
@@ -34,7 +32,6 @@ public class RemoveByID extends ArguedServerCommand<Integer> {
         }
         throw new MessagedRuntimeException("Organization not found");
     }
-
 
     private void removeOrganizationFromDataCollection(Organization organization) {
         dataManager.getCollection().remove(organization);
@@ -44,11 +41,11 @@ public class RemoveByID extends ArguedServerCommand<Integer> {
 
     private void segGoodResult(String removedOrganizationName) {
         result = String.format("Удалена оганизация \"%s\"", removedOrganizationName);
-        result = TextFormatter.format(result, TextFormatter.Format.GREEN);      // highlighting
+        result = TextFormatter.format(result, TextFormatter.Format.GREEN); // highlighting
     }
 
     private void setBadResult() {
         result = "В коллекции нет подходящего элемента";
-        result = TextFormatter.format(result, TextFormatter.Format.RED);      // highlighting
+        result = TextFormatter.format(result, TextFormatter.Format.RED); // highlighting
     }
 }

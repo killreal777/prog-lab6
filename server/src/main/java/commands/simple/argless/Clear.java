@@ -5,7 +5,6 @@ import data.management.DataManager;
 import io.TextFormatter;
 import subject.model.Organization;
 
-
 public class Clear extends ServerCommand {
     public Clear(DataManager dataManager) {
         super(dataManager);

@@ -5,18 +5,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.time.LocalDateTime;
 
-
 @XmlRootElement(name = "collection_info")
-@XmlType(propOrder = {"collectionType", "initializationDateString", "elementsAmount"})
+@XmlType(propOrder = { "collectionType", "initializationDateString", "elementsAmount" })
 public class CollectionInfo {
     private String collectionType = "PriorityQueue<Organization>";
     private LocalDateTime initializationDate = LocalDateTime.now();
-    private String initializationDateString = initializationDate.toString();      // this field is for XML storing
+    private String initializationDateString = initializationDate.toString(); // this field is for XML storing
     private int elementsAmount;
 
-
-    public CollectionInfo() {}
-
+    public CollectionInfo() {
+    }
 
     public void incrementElementsAmount() {
         elementsAmount++;
@@ -25,8 +23,6 @@ public class CollectionInfo {
     public void decrementElementsAmount() {
         elementsAmount--;
     }
-
-
 
     @XmlElement(name = "collection_type")
     public String getCollectionType() {
@@ -43,8 +39,6 @@ public class CollectionInfo {
         return elementsAmount;
     }
 
-
-
     public void setCollectionType(String collectionType) {
         this.collectionType = collectionType;
     }
@@ -57,8 +51,6 @@ public class CollectionInfo {
     public void setElementsAmount(int elementsAmount) {
         this.elementsAmount = elementsAmount;
     }
-
-
 
     @Override
     public String toString() {

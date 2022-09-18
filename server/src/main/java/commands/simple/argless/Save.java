@@ -6,7 +6,6 @@ import io.TextFormatter;
 
 import java.io.FileNotFoundException;
 
-
 public class Save extends ServerCommand {
     public Save(DataManager dataManager) {
         super(dataManager);

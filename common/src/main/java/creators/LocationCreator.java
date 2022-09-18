@@ -4,17 +4,17 @@ import io.Terminal;
 import subject.model.FieldDefinitionException;
 import subject.model.Location;
 
-
 public class LocationCreator extends Creator<Location> {
-    private enum LocationArgument {X, Y, Z, NAME}
-    private LocationArgument lastSetArgument;
+    private enum LocationArgument {
+        X, Y, Z, NAME
+    }
 
+    private LocationArgument lastSetArgument;
 
     public LocationCreator(Terminal terminal) {
         super(terminal);
         this.lastSetArgument = LocationArgument.NAME;
     }
-
 
     @Override
     protected Location createNewInstance() {
@@ -24,17 +24,21 @@ public class LocationCreator extends Creator<Location> {
     @Override
     protected void defineFields() {
         switch (lastSetArgument) {
-            case NAME: defineX();
-            case X: defineY();
-            case Y: defineZ();
-            case Z: defineName();
+        case NAME:
+            defineX();
+        case X:
+            defineY();
+        case Y:
+            defineZ();
+        case Z:
+            defineName();
         }
         // break statement MUST NOT be here
     }
 
-
     private void defineX() throws RuntimeException {
-        String[] input = terminal.readLineSplit("Введите координату X локации: " + formatRequirements("Long, not null"));
+        String[] input = terminal
+                .readLineSplit("Введите координату X локации: " + formatRequirements("Long, not null"));
         checkArgumentsAmount(input, 1);
         try {
             creatingObject.setX(Long.parseLong(input[0]));
@@ -72,6 +76,3 @@ public class LocationCreator extends Creator<Location> {
         this.lastSetArgument = LocationArgument.NAME;
     }
 }
-
-
-

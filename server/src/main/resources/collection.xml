@@ -2,10 +2,32 @@
 <data>
     <collection_info>
         <collection_type>PriorityQueue&lt;Organization&gt;</collection_type>
-        <initialization_date>2022-08-29T18:43:52.638</initialization_date>
-        <elements_amount>1</elements_amount>
+        <initialization_date>2022-09-18T21:37:38.095860145</initialization_date>
+        <elements_amount>2</elements_amount>
     </collection_info>
     <collection>
+        <organization>
+            <id>2</id>
+            <name>1</name>
+            <coordinates>
+                <x>2</x>
+                <y>3</y>
+            </coordinates>
+            <creation_date>2022-09-18T21:38:41.083034065</creation_date>
+            <annual_turnover>4</annual_turnover>
+            <full_name>5</full_name>
+            <employees_count>1</employees_count>
+            <type>PRIVATE_LIMITED_COMPANY</type>
+            <official_address>
+                <zip_code>3</zip_code>
+                <town>
+                    <x>4</x>
+                    <y>5</y>
+                    <z>1.0</z>
+                    <name>2</name>
+                </town>
+            </official_address>
+        </organization>
         <organization>
             <id>1</id>
             <name>Lesha Inc</name>

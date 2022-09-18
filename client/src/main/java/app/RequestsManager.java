@@ -11,15 +11,14 @@ import requestes.simple.FilterStartsWithNameRequest;
 import requestes.simple.RemoveByIdRequest;
 import requestes.simple.ArglessCommandRequest;
 
-
 public class RequestsManager extends PrototypesManager<CommandRequest> {
     private final Terminal terminal;
-    //private final CommandHistory history;
+    // private final CommandHistory history;
 
     public RequestsManager(Terminal terminal) {
         this.terminal = terminal;
         definePrototypes();
-        //this.history = new CommandHistory();
+        // this.history = new CommandHistory();
     }
 
     @Override

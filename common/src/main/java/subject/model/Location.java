@@ -1,20 +1,17 @@
 package subject.model;
 
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 
-
 @XmlRootElement(name = "town")
-@XmlType(propOrder = {"x", "y", "z", "name"})
+@XmlType(propOrder = { "x", "y", "z", "name" })
 public class Location implements Serializable {
-    private Long x;         //not null
+    private Long x; // not null
     private int y;
     private float z;
-    private String name;    //not null
-
+    private String name; // not null
 
     public Location(Long x, int y, float z, String name) {
         this.x = x;
@@ -23,9 +20,8 @@ public class Location implements Serializable {
         this.name = name;
     }
 
-    public Location() {}
-
-
+    public Location() {
+    }
 
     @XmlElement
     public Long getX() {
@@ -47,8 +43,6 @@ public class Location implements Serializable {
         return name;
     }
 
-
-
     public void setX(Long x) {
         if (x == null)
             throw new FieldDefinitionException("Координата X локации не может быть null");
@@ -68,8 +62,6 @@ public class Location implements Serializable {
             throw new FieldDefinitionException("Название локации не может быть null");
         this.name = name;
     }
-
-
 
     @Override
     public String toString() {

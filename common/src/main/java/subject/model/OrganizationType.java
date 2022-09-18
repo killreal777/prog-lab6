@@ -1,11 +1,9 @@
 package subject.model;
 
-
 import java.io.Serializable;
 
-public enum OrganizationType  implements Serializable {
-    COMMERCIAL("Коммерческая организация"),
-    TRUST("Траст"),
+public enum OrganizationType implements Serializable {
+    COMMERCIAL("Коммерческая организация"), TRUST("Траст"),
     PRIVATE_LIMITED_COMPANY("Общество с ограниченной ответственностью"),
     OPEN_JOINT_STOCK_COMPANY("Открытое акционерное общество");
 
@@ -17,14 +15,14 @@ public enum OrganizationType  implements Serializable {
 
     public static OrganizationType getByID(int id) throws InvalidIDException {
         switch (id) {
-            case 0:
-                return COMMERCIAL;
-            case 1:
-                return TRUST;
-            case 2:
-                return PRIVATE_LIMITED_COMPANY;
-            case 3:
-                return OPEN_JOINT_STOCK_COMPANY;
+        case 0:
+            return COMMERCIAL;
+        case 1:
+            return TRUST;
+        case 2:
+            return PRIVATE_LIMITED_COMPANY;
+        case 3:
+            return OPEN_JOINT_STOCK_COMPANY;
         }
         throw new InvalidIDException();
     }
@@ -34,7 +32,7 @@ public enum OrganizationType  implements Serializable {
         return name;
     }
 
-    //TODO
+    // TODO
     public static class InvalidIDException extends RuntimeException {
     }
 }

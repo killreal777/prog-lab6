@@ -6,21 +6,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-
 /**
  * Class for ID generation for data collection objects
  */
-
 
 public class IdGenerator {
     private final ArrayList<Integer> removedIds;
     private int currentHighestId;
 
-
     public IdGenerator() {
         removedIds = new ArrayList<>();
     }
-
 
     /**
      * Generate and register a new ID
@@ -33,14 +29,12 @@ public class IdGenerator {
             return removedIds.remove(0);
     }
 
-
     /**
      * Mark ID as removed for issuing later
      */
     public void setToRemoved(int id) {
         removedIds.add(id);
     }
-
 
     /**
      * Load information about IDs form collection for correct ID generation

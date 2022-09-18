@@ -5,14 +5,12 @@ import io.Terminal;
 
 import java.util.Arrays;
 
-
 public class CommandReader {
     private final Terminal terminal;
 
     public CommandReader(Terminal terminal) {
         this.terminal = terminal;
     }
-
 
     public UserInput readCommand() throws CommandNotFoundException {
         String[] inputLine = readNextLine();
@@ -32,7 +30,7 @@ public class CommandReader {
     private String[] readNextLine() {
         String[] inputLine = terminal.readLineSplit();
         if (isInputLineEmpty(inputLine))
-            return readNextLine();   // empty input -> read again
+            return readNextLine(); // empty input -> read again
         else
             return inputLine;
     }
@@ -40,7 +38,6 @@ public class CommandReader {
     private boolean isInputLineEmpty(String[] inputLine) {
         return inputLine[0].equals("");
     }
-
 
     class UserInput {
         private final String commandName;

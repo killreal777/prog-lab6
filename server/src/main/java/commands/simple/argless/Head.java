@@ -6,7 +6,6 @@ import subject.model.Organization;
 
 import java.util.PriorityQueue;
 
-
 public class Head extends ServerCommand {
     public Head(DataManager dataManager) {
         super(dataManager);

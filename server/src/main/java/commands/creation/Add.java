@@ -7,7 +7,6 @@ import subject.model.Organization;
 
 import java.time.LocalDateTime;
 
-
 public class Add extends ArguedServerCommand<Organization> {
 
     public Add(DataManager dataManager) {
@@ -15,7 +14,6 @@ public class Add extends ArguedServerCommand<Organization> {
         this.name = "add {element}";
         this.description = "добавить новый элемент в коллекцию";
     }
-
 
     @Override
     public void execute() {
@@ -38,7 +36,6 @@ public class Add extends ArguedServerCommand<Organization> {
         organization.setId(dataManager.getIdGenerator().generateId());
         organization.setCreationDate(LocalDateTime.now());
     }
-
 
     private void setGoodResult() {
         this.result = TextFormatter.format("Элемент успешно добавлен", TextFormatter.Format.GREEN);

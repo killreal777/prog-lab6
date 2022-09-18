@@ -2,8 +2,7 @@ package commands.local;
 
 import abstractions.commands.Command;
 
-
-public class Exit extends Command{
+public class Exit extends Command {
     public Exit() {
         this.name = "exit";
         this.description = "завершить программу (без сохранения в файл)";

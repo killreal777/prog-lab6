@@ -7,7 +7,6 @@ import subject.model.Organization;
 
 import java.util.regex.Pattern;
 
-
 public class FilterStartsWithName extends ArguedServerCommand<String> {
 
     public FilterStartsWithName(DataManager dataManager) {
@@ -16,8 +15,6 @@ public class FilterStartsWithName extends ArguedServerCommand<String> {
         this.description = "вывести элементы, значение поля name которых начинается с заданной подстроки";
     }
 
-
-
     @Override
     public void execute() {
         Pattern nameRegex = Pattern.compile("^" + commandArgument + ".*");
@@ -25,7 +22,6 @@ public class FilterStartsWithName extends ArguedServerCommand<String> {
         if (result.equals(""))
             setBadResult();
     }
-
 
     private void writeAllMatchesToResult(Pattern nameRegex) {
         for (Organization organization : dataManager.getCollection()) {

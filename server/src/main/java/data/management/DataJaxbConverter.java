@@ -1,6 +1,5 @@
 package data.management;
 
-
 import io.Terminal;
 import io.TextFormatter;
 import data.xml.model.DataRoot;
@@ -15,11 +14,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
 /**
  * Class for conversation of collection of Organizations between the XML and java object data.model
  */
-
 
 public class DataJaxbConverter {
     private final Terminal terminal;
@@ -27,7 +24,6 @@ public class DataJaxbConverter {
     private final DataSpecialValidator validator;
     private Marshaller marshaller;
     private Unmarshaller unmarshaller;
-
 
     public DataJaxbConverter(Terminal terminal) {
         this.terminal = terminal;
@@ -46,7 +42,6 @@ public class DataJaxbConverter {
             e.printStackTrace();
         }
     }
-
 
     /**
      * Read XML form data file and convert it to the object data.model
@@ -80,12 +75,6 @@ public class DataJaxbConverter {
         return readXml();
     }
 
-
-    /**
-     * Converts object data.model to the XML structure and saves it to the data file
-     *
-     * @param dataRoot Root class of object data.model
-     */
     public void writeXml(DataRoot dataRoot) throws JAXBException, FileNotFoundException {
         try {
             FileWriter writer = dataFile.createWriter();
@@ -98,15 +87,14 @@ public class DataJaxbConverter {
 
     private void handleSavingException(DataRoot dataRoot) throws JAXBException, FileNotFoundException {
         String message = "Невозмножно сохранить коллекцию в файле: недостаточно прав ";
-        String options = "Введите путь к другому файлу (для остановки этого процесса ввдеите путь к текущему файлу)" +
-                "или пустую строку для отмены: ";
+        String options = "Введите путь к другому файлу (для остановки этого процесса ввдеите путь к текущему файлу)"
+                + "или пустую строку для отмены: ";
         String input = reenter(message, options);
         if (input.equals(""))
             throw new FileNotFoundException();
         dataFile.setFileByPath(input);
         writeXml(dataRoot);
     }
-
 
     private String reenter(String message, String options) {
         String text = message + "\n" + options;

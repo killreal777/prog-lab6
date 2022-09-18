@@ -1,6 +1,5 @@
 package commands.creation;
 
-
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
 import exception.MessagedRuntimeException;
@@ -9,17 +8,14 @@ import subject.model.Organization;
 
 import java.time.LocalDateTime;
 
-
 public class Update extends ArguedServerCommand<Organization> {
     private Integer id;
-
 
     public Update(DataManager dataManager) {
         super(dataManager);
         this.name = "update id {element}";
         this.description = "обновить значение элемента коллекции, id которого равен заданному";
     }
-
 
     @Override
     public void execute() {
@@ -32,7 +28,6 @@ public class Update extends ArguedServerCommand<Organization> {
             setBadResult();
         }
     }
-
 
     private Organization findMatchingOrganization(Integer id) throws MessagedRuntimeException {
         for (Organization organization : dataManager.getCollection()) {
@@ -52,7 +47,6 @@ public class Update extends ArguedServerCommand<Organization> {
         newOrganization.setId(oldOrganization.getId());
         newOrganization.setCreationDate(LocalDateTime.now());
     }
-
 
     private void setGoodResult(String oldOrganizationName) {
         String message = String.format("Обновлена оганизация \"%s\"", oldOrganizationName);

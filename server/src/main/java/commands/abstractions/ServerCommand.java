@@ -1,6 +1,5 @@
 package commands.abstractions;
 
-
 import abstractions.commands.Command;
 import data.management.DataManager;
 

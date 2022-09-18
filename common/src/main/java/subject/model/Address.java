@@ -1,26 +1,23 @@
 package subject.model;
 
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 
-
 @XmlRootElement(name = "official_address")
-@XmlType(propOrder = {"zipCode", "town"})
+@XmlType(propOrder = { "zipCode", "town" })
 public class Address implements Serializable {
-    private String zipCode;     // not null, length <= 16
-    private Location town;      // not null
+    private String zipCode; // not null, length <= 16
+    private Location town; // not null
 
     public Address(String zipCode, Long x, int y, float z, String name) {
         this.zipCode = zipCode;
         this.town = new Location(x, y, x, name);
     }
 
-    public Address() {}
-
-
+    public Address() {
+    }
 
     @XmlElement(name = "zip_code")
     public String getZipCode() {
@@ -31,8 +28,6 @@ public class Address implements Serializable {
     public Location getTown() {
         return town;
     }
-
-
 
     public void setZipCode(String zipCode) {
         if (zipCode.equals(""))
@@ -45,8 +40,6 @@ public class Address implements Serializable {
     public void setTown(Location town) {
         this.town = town;
     }
-
-
 
     @Override
     public String toString() {

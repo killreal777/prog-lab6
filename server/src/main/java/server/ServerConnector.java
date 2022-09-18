@@ -16,7 +16,6 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.function.Function;
 
-
 public class ServerConnector {
     private final Scanner scanner;
     private final Selector selector;
@@ -34,7 +33,6 @@ public class ServerConnector {
         serverSocketChannel.configureBlocking(false);
         serverSocketChannel.register(selector, serverSocketChannel.validOps());
     }
-
 
     public void run() throws IOException, ClassNotFoundException {
         while (true) {

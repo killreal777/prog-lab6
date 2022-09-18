@@ -6,7 +6,6 @@ import abstractions.requests.CommandRequest;
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
 
-
 public class ServerExecutionManager {
     private final ServerCommandsManager commandsManager;
 

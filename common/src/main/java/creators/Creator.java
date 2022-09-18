@@ -4,28 +4,25 @@ import io.Terminal;
 import io.TextFormatter;
 import subject.model.FieldDefinitionException;
 
-
 /**
  * Abstract class for creating and validation composite data objects
  *
- * @param <CreatingObject> composite data object
+ * @param <CreatingObject>
+ *            composite data object
  */
-
 
 public abstract class Creator<CreatingObject> {
     protected final Terminal terminal;
     protected CreatingObject creatingObject;
 
-
     protected Creator(Terminal terminal) {
         this.terminal = terminal;
     }
 
-
     public CreatingObject create() {
         try {
             initCreatingObjectIfItsNecessary();
-            defineFields();     // abstract
+            defineFields(); // abstract
             return returnAndReset();
         } catch (FieldDefinitionException e) {
             terminal.print(e.getMessage());
@@ -35,7 +32,7 @@ public abstract class Creator<CreatingObject> {
 
     private void initCreatingObjectIfItsNecessary() {
         if (creatingObject == null)
-            creatingObject = createNewInstance();   // abstract
+            creatingObject = createNewInstance(); // abstract
     }
 
     private CreatingObject returnAndReset() {
@@ -43,7 +40,6 @@ public abstract class Creator<CreatingObject> {
         creatingObject = null;
         return definedObject;
     }
-
 
     protected void checkArgumentsAmount(String[] args, int correctAmount) {
         if (args.length != correctAmount)
@@ -55,7 +51,6 @@ public abstract class Creator<CreatingObject> {
         requirements = "(" + requirements + ") ";
         return TextFormatter.format(requirements, TextFormatter.Format.GRAY_ITALIC);
     }
-
 
     protected abstract CreatingObject createNewInstance();
 

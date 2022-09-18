@@ -10,20 +10,17 @@ public class ExecuteScript extends Command {
     private final Terminal terminal;
     private String scriptPath;
 
-
     public ExecuteScript(Terminal terminal) {
         this.name = "execute_script file_name";
         this.description = "считать и исполнить скрипт из указанного файла";
         this.terminal = terminal;
     }
 
-
     @Override
     public void setArgs(String[] args) {
         checkArgumentsAmount(args, 1);
         this.scriptPath = args[0];
     }
-
 
     @Override
     public void execute() {

@@ -1,18 +1,15 @@
 package data.management;
 
-
 import subject.model.FieldDefinitionException;
 import subject.model.Organization;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
-
 /**
  * Class for validation special requirements for fields of data model objects, which can't be validated by theirs
  * constructors (field uniqueness in collection)
  */
-
 
 public class DataSpecialValidator {
     /**

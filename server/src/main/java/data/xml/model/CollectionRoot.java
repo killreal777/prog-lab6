@@ -6,14 +6,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.PriorityQueue;
 
-
 @XmlRootElement(name = "collection")
 public class CollectionRoot {
     private PriorityQueue<Organization> collection = new PriorityQueue<>();
 
-
-    public CollectionRoot() {}
-
+    public CollectionRoot() {
+    }
 
     @XmlElement(name = "organization")
     public PriorityQueue<Organization> getCollection() {

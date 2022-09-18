@@ -1,6 +1,5 @@
 package abstractions.requests;
 
-
 public abstract class ArguedCommandRequest<ArgType> extends CommandRequest {
     protected ArgType commandArgument;
 

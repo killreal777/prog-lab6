@@ -2,7 +2,6 @@ package abstractions.prototypes;
 
 import java.util.HashMap;
 
-
 public abstract class PrototypesManager<T extends CloneablePrototype> {
     private final HashMap<String, T> prototypesMap;
 

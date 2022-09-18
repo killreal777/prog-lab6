@@ -7,16 +7,14 @@ import io.TextFormatter;
 import subject.model.Address;
 import subject.model.Organization;
 
-
 public class RemoveByAddress extends ArguedServerCommand<Address> {
 
     public RemoveByAddress(DataManager dataManager) {
         super(dataManager);
         this.name = "remove_any_by_official_address {officialAddress}";
-        this.description = "удалить из коллекции один элемент, " +
-                "значение поля officialAddress которого эквивалентно заданному";
+        this.description = "удалить из коллекции один элемент, "
+                + "значение поля officialAddress которого эквивалентно заданному";
     }
-
 
     @Override
     public void execute() {
@@ -46,11 +44,11 @@ public class RemoveByAddress extends ArguedServerCommand<Address> {
 
     private void segGoodResult(String removedOrganizationName) {
         result = String.format("Удалена оганизация \"%s\"", removedOrganizationName);
-        result = TextFormatter.format(result, TextFormatter.Format.GREEN);      // highlighting
+        result = TextFormatter.format(result, TextFormatter.Format.GREEN); // highlighting
     }
 
     private void setBadResult() {
         result = "В коллекции нет подходящего элемента";
-        result = TextFormatter.format(result, TextFormatter.Format.RED);      // highlighting
+        result = TextFormatter.format(result, TextFormatter.Format.RED); // highlighting
     }
 }
