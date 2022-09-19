@@ -19,10 +19,13 @@ public class ClientConnector {
     }
 
     private void sendRequest(CommandRequest request) throws IOException {
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
         objectOutputStream.writeObject(request);
-        objectOutputStream.close();
+        clientSocket.getOutputStream().write(byteArrayOutputStream.toByteArray());
         System.out.println("REQUEST IS SEND");
+        byteArrayOutputStream.close();
+        objectOutputStream.close();
     }
 
     private String getResponse() throws IOException, ClassNotFoundException {
