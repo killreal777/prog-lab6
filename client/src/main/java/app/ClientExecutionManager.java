@@ -16,6 +16,7 @@ public class ClientExecutionManager {
     private final RequestsManager requestsManager;
     private final ClientConnector connector;
 
+
     public ClientExecutionManager() {
         this.history = new LocalHistory();
         this.terminal = new Terminal();
@@ -23,7 +24,13 @@ public class ClientExecutionManager {
         this.requestsManager = new RequestsManager(terminal);
         this.localCommandManager = new LocalCommandManager(terminal, history);
         this.connector = new ClientConnector();
+        try {
+            connector.connect();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 
     public void executeNextCommand() {
         try {

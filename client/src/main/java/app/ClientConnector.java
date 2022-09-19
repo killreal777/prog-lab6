@@ -9,8 +9,8 @@ import java.net.Socket;
 public class ClientConnector {
     private Socket clientSocket;
 
-    private void connect() throws IOException {
-        this.clientSocket = new Socket("localhost", 7770);
+    public void connect() throws IOException {
+        this.clientSocket = new Socket("localhost", 7700);
         System.out.println("CLIENT IS RUNNING");
     }
 
@@ -20,6 +20,7 @@ public class ClientConnector {
         objectOutputStream.writeObject(request);
         clientSocket.getOutputStream().write(byteArrayOutputStream.toByteArray());
         System.out.println("REQUEST IS SEND");
+        clientSocket.getOutputStream().flush();
         byteArrayOutputStream.close();
         objectOutputStream.close();
     }
@@ -33,7 +34,6 @@ public class ClientConnector {
     }
 
     public String interact(CommandRequest request) throws IOException, ClassNotFoundException {
-        connect();
         sendRequest(request);
         return getResponse();
     }

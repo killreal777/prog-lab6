@@ -24,37 +24,48 @@ public class ServerConnector {
     private final Function<CommandRequest, String> executeCommandFunction;
     private String response;
 
+
     public ServerConnector(Function<CommandRequest, String> executeCommandFunction) throws IOException {
         this.scanner = new Scanner(System.in);
         this.executeCommandFunction = executeCommandFunction;
         this.selector = Selector.open();
         this.serverSocketChannel = ServerSocketChannel.open();
-        SocketAddress serverSocketAddress = new InetSocketAddress("localhost", 7770);
+        SocketAddress serverSocketAddress = new InetSocketAddress("localhost", 7700);
         serverSocketChannel.bind(serverSocketAddress);
         serverSocketChannel.configureBlocking(false);
         serverSocketChannel.register(selector, serverSocketChannel.validOps());
     }
+
 
     public void run() throws IOException, ClassNotFoundException {
         while (true) {
             checkSaveRequest();
             selector.select();
             Set<SelectionKey> keys = selector.selectedKeys();
-            Iterator iterator = keys.iterator();
-            while (iterator.hasNext()) {
-                SelectionKey key = (SelectionKey) iterator.next();
-                if (key.isValid()) {
-                    if (key.isAcceptable())
-                        accept(key);
-                    if (key.isReadable())
-                        read(key);
-                    if (key.isWritable())
-                        write(key);
-                }
-                iterator.remove();
-            }
+            Iterator<SelectionKey> iterator = keys.iterator();
+            processSelectionKeys(iterator);
         }
     }
+
+    private void processSelectionKeys(Iterator<SelectionKey> iterator) throws IOException, ClassNotFoundException {
+        while (iterator.hasNext()) {
+            SelectionKey key = iterator.next();
+            processSelectionKey(key);
+            iterator.remove();
+        }
+    }
+
+    private void processSelectionKey(SelectionKey key) throws IOException, ClassNotFoundException {
+        if (key.isValid()) {
+            if (key.isAcceptable())
+                accept(key);
+            if (key.isReadable())
+                read(key);
+            if (key.isWritable())
+                write(key);
+        }
+    }
+
 
     private void accept(SelectionKey key) throws IOException {
         SocketChannel clientSocketChannel = serverSocketChannel.accept();
@@ -82,9 +93,10 @@ public class ServerConnector {
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
         objectOutputStream.writeObject(response);
         clientSocketChannel.write(ByteBuffer.wrap(byteArrayOutputStream.toByteArray()));
-        clientSocketChannel.register(key.selector(), SelectionKey.OP_CONNECT);
+        clientSocketChannel.register(key.selector(), SelectionKey.OP_ACCEPT);
         System.out.println("CHANNEL WRITTEN");
     }
+
 
     private void checkSaveRequest() throws IOException {
         if (System.in.available() > 0) {
