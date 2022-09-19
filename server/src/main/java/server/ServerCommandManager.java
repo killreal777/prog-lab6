@@ -13,6 +13,7 @@ import data.management.DataManager;
 import register.CommandRecord;
 import register.CommandsChecker;
 
+
 public class ServerCommandManager extends PrototypesManager<ServerCommand> {
     private final DataManager dataManager;
 

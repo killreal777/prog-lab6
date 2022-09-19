@@ -5,8 +5,6 @@ import io.Terminal;
 import abstractions.requests.CreationCommandRequest;
 import subject.model.Organization;
 
-import java.time.LocalDateTime;
-
 public class AddRequest extends CreationCommandRequest<Organization> {
     protected Organization organization;
 

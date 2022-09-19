@@ -3,6 +3,7 @@ package abstractions.requests;
 import abstractions.prototypes.CloneablePrototype;
 import exception.ArgumentAmountException;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public abstract class CommandRequest extends CloneablePrototype implements Serializable {
