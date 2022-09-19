@@ -1,4 +1,4 @@
-package exception;
+package exceptions;
 
 public class ArgumentAmountException extends MessagedRuntimeException {
     public ArgumentAmountException(int inputted, int expected) {

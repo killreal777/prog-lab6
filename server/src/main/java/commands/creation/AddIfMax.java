@@ -1,9 +1,8 @@
 package commands.creation;
 
 import data.management.DataManager;
-import io.Terminal;
 import io.TextFormatter;
-import subject.model.Organization;
+import model.Organization;
 
 public class AddIfMax extends Add {
     public AddIfMax(DataManager dataManager) {

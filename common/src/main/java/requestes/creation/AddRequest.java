@@ -1,26 +1,17 @@
 package requestes.creation;
 
-import creators.OrganizationCreator;
-import io.Terminal;
+import abstractions.creator.Creator;
 import abstractions.requests.CreationCommandRequest;
-import subject.model.Organization;
+import model.Organization;
 
 public class AddRequest extends CreationCommandRequest<Organization> {
-    protected Organization organization;
-
-    public AddRequest(Terminal terminal) {
-        super(terminal, "add");
+    public AddRequest(Creator<Organization> creator) {
+        super("add", creator);
     }
 
     @Override
     public void setCommandArgs(String[] args) {
         checkArgumentsAmount(args, 0);
-        initOrganization();
-    }
-
-    protected void initOrganization() {
-        OrganizationCreator creator = new OrganizationCreator(terminal);
-        this.commandArgument = creator.create();
-        terminal = null;
+        createArgument();
     }
 }

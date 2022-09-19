@@ -2,6 +2,8 @@ package app;
 
 import abstractions.prototypes.PrototypesManager;
 import abstractions.requests.CommandRequest;
+import creators.AddressCreator;
+import creators.OrganizationCreator;
 import io.Terminal;
 import register.CommandRecord;
 import register.CommandsChecker;
@@ -27,10 +29,10 @@ public class RequestsManager extends PrototypesManager<CommandRequest> {
     @Override
     protected void definePrototypes() {
         // server creation command requests
-        addPrototype("add", new AddRequest(terminal));
-        addPrototype("add_if_max", new AddIfMaxRequest(terminal));
-        addPrototype("update", new UpdateRequest(terminal));
-        addPrototype("remove_any_by_official_address", new RemoveByAddressRequest(terminal));
+        addPrototype("add", new AddRequest(new OrganizationCreator(terminal)));
+        addPrototype("add_if_max", new AddIfMaxRequest(new OrganizationCreator(terminal)));
+        addPrototype("update", new UpdateRequest(new OrganizationCreator(terminal)));
+        addPrototype("remove_any_by_official_address", new RemoveByAddressRequest(new AddressCreator(terminal)));
 
         // server simple arged command requests
         addPrototype("remove_by_id", new RemoveByIdRequest());

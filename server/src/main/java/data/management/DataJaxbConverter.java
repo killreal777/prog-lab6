@@ -7,7 +7,7 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
-import subject.model.FieldDefinitionException;
+import exceptions.FieldDefinitionException;
 
 
 import java.io.FileNotFoundException;

@@ -1,22 +1,21 @@
 package requestes.creation;
 
-import creators.OrganizationCreator;
-import exception.ArgumentTypeException;
-import io.Terminal;
+import abstractions.creator.Creator;
+import exceptions.ArgumentTypeException;
 import abstractions.requests.CreationCommandRequest;
-import subject.model.Organization;
+import model.Organization;
+
 
 public class UpdateRequest extends CreationCommandRequest<Organization> {
-
-    public UpdateRequest(Terminal terminal) {
-        super(terminal, "update");
+    public UpdateRequest(Creator<Organization> creator) {
+        super( "update", creator);
     }
 
     @Override
     public void setCommandArgs(String[] args) {
         checkArgumentsAmount(args, 1);
         Integer id = parseId(args[0]);
-        initOrganization();
+        createArgument();
         this.commandArgument.setId(id);
     }
 
@@ -26,10 +25,5 @@ public class UpdateRequest extends CreationCommandRequest<Organization> {
         } catch (NumberFormatException e) {
             throw new ArgumentTypeException(ArgumentTypeException.ArgumentType.LONG);
         }
-    }
-
-    private void initOrganization() {
-        OrganizationCreator organizationCreator = new OrganizationCreator(terminal);
-        this.commandArgument = organizationCreator.create();
     }
 }

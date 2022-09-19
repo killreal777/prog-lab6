@@ -1,7 +1,7 @@
-package commands.local;
+package commands;
 
-import abstractions.commands.Command;
-import exception.MessagedRuntimeException;
+import abstractions.command.Command;
+import exceptions.MessagedRuntimeException;
 import io.Terminal;
 
 import java.io.FileNotFoundException;

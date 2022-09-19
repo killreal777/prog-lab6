@@ -1,4 +1,4 @@
-package subject.model;
+package exceptions;
 
 public class FieldDefinitionException extends RuntimeException {
     private final String message;

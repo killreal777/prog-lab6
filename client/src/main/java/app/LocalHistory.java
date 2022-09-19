@@ -1,6 +1,6 @@
 package app;
 
-import abstractions.commands.Command;
+import abstractions.command.Command;
 
 /**
  * Class for storing last 10 executed Commands

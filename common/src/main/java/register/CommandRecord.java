@@ -1,6 +1,6 @@
 package register;
 
-import exception.InvalidRecordException;
+import exceptions.InvalidRecordException;
 
 public enum CommandRecord {
 

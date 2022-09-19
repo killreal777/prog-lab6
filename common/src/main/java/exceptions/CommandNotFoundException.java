@@ -1,4 +1,4 @@
-package exception;
+package exceptions;
 
 public class CommandNotFoundException extends MessagedRuntimeException {
     public CommandNotFoundException(String commandName) {

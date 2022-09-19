@@ -2,10 +2,10 @@ package commands.creation;
 
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
-import exception.MessagedRuntimeException;
+import exceptions.MessagedRuntimeException;
 import io.TextFormatter;
-import subject.model.Address;
-import subject.model.Organization;
+import model.Address;
+import model.Organization;
 
 public class RemoveByAddress extends ArguedServerCommand<Address> {
 

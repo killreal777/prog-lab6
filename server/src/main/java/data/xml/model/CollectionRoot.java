@@ -1,6 +1,6 @@
 package data.xml.model;
 
-import subject.model.Organization;
+import model.Organization;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

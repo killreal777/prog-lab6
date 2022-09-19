@@ -1,4 +1,4 @@
-package exception;
+package exceptions;
 
 public class FoundUnregisteredCommandsException extends MessagedRuntimeException {
     public FoundUnregisteredCommandsException(String commandNames, String structureName) {

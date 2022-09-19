@@ -1,6 +1,6 @@
 package app;
 
-import exception.CommandNotFoundException;
+import exceptions.CommandNotFoundException;
 import io.Terminal;
 
 import java.util.Arrays;

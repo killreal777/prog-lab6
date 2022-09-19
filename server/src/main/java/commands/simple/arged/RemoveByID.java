@@ -2,9 +2,9 @@ package commands.simple.arged;
 
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
-import exception.MessagedRuntimeException;
+import exceptions.MessagedRuntimeException;
 import io.TextFormatter;
-import subject.model.Organization;
+import model.Organization;
 
 public class RemoveByID extends ArguedServerCommand<Integer> {
     public RemoveByID(DataManager dataManager) {

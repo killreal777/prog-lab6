@@ -1,8 +1,8 @@
 package app;
 
-import abstractions.commands.Command;
+import abstractions.command.Command;
 import abstractions.requests.CommandRequest;
-import exception.MessagedRuntimeException;
+import exceptions.MessagedRuntimeException;
 import io.Terminal;
 
 import java.io.IOException;

@@ -1,14 +1,14 @@
 package creators;
 
 import io.Terminal;
-import subject.model.Address;
-import subject.model.FieldDefinitionException;
+import model.Address;
+import exceptions.FieldDefinitionException;
 
 /**
  * Class for creating and validation Addresses
  */
 
-public class AddressCreator extends Creator<Address> {
+public class AddressCreator extends AbstractCreator<Address> {
     private final LocationCreator locationCreator;
 
     private enum AddressArgument {

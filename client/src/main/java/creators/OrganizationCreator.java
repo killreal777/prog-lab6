@@ -1,11 +1,11 @@
 package creators;
 
 import io.Terminal;
-import subject.model.FieldDefinitionException;
-import subject.model.Organization;
-import subject.model.OrganizationType;
+import exceptions.FieldDefinitionException;
+import model.Organization;
+import model.OrganizationType;
 
-public class OrganizationCreator extends Creator<Organization> {
+public class OrganizationCreator extends AbstractCreator<Organization> {
     private final CoordinatesCreator coordinatesCreator;
     private final AddressCreator addressCreator;
 

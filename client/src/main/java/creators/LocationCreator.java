@@ -1,10 +1,10 @@
 package creators;
 
 import io.Terminal;
-import subject.model.FieldDefinitionException;
-import subject.model.Location;
+import exceptions.FieldDefinitionException;
+import model.Location;
 
-public class LocationCreator extends Creator<Location> {
+public class LocationCreator extends AbstractCreator<Location> {
     private enum LocationArgument {
         X, Y, Z, NAME
     }

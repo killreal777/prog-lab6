@@ -1,4 +1,4 @@
-package exception;
+package exceptions;
 
 public class RequestNotFoundException extends MessagedRuntimeException {
     public RequestNotFoundException(String commandName) {

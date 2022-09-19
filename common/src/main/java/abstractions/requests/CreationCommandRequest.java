@@ -1,14 +1,17 @@
 package abstractions.requests;
 
-import io.Terminal;
+import abstractions.creator.Creator;
 
-import java.io.Serializable;
 
 public abstract class CreationCommandRequest<ArgType> extends ArguedCommandRequest<ArgType> {
-    protected Terminal terminal;
+    transient protected final Creator<ArgType> creator;
 
-    public CreationCommandRequest(Terminal terminal, String commandName) {
+    public CreationCommandRequest(String commandName, Creator<ArgType> creator) {
         super(commandName);
-        this.terminal = terminal;
+        this.creator = creator;
+    }
+
+    protected void createArgument() {
+        this.commandArgument = creator.create();
     }
 }

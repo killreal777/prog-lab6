@@ -1,6 +1,6 @@
-package commands.local;
+package commands;
 
-import abstractions.commands.Command;
+import abstractions.command.Command;
 
 public class Exit extends Command {
     public Exit() {

@@ -3,7 +3,7 @@ package commands.simple.argless;
 import commands.abstractions.ServerCommand;
 import data.management.DataManager;
 import io.TextFormatter;
-import subject.model.Organization;
+import model.Organization;
 
 public class Clear extends ServerCommand {
     public Clear(DataManager dataManager) {

@@ -1,6 +1,6 @@
-package commands.local;
+package commands;
 
-import abstractions.commands.Command;
+import abstractions.command.Command;
 import app.LocalHistory;
 
 public class History extends Command {

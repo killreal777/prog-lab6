@@ -1,4 +1,4 @@
-package exception;
+package exceptions;
 
 public class InvalidRecordException extends MessagedRuntimeException {
     public InvalidRecordException() {

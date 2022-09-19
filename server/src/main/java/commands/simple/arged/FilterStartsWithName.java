@@ -3,7 +3,7 @@ package commands.simple.arged;
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
 import io.TextFormatter;
-import subject.model.Organization;
+import model.Organization;
 
 import java.util.regex.Pattern;
 

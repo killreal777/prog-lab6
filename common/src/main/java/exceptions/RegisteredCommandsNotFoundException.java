@@ -1,4 +1,4 @@
-package exception;
+package exceptions;
 
 public class RegisteredCommandsNotFoundException extends MessagedRuntimeException {
     public RegisteredCommandsNotFoundException(String commandNames, String structureName) {

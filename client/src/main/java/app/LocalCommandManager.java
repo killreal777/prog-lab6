@@ -1,16 +1,14 @@
 package app;
 
 import abstractions.prototypes.PrototypesManager;
-import abstractions.commands.Command;
-import commands.local.ExecuteScript;
-import commands.local.Exit;
-import commands.local.Help;
-import commands.local.History;
+import abstractions.command.Command;
+import commands.ExecuteScript;
+import commands.Exit;
+import commands.Help;
+import commands.History;
 import io.Terminal;
 import register.CommandRecord;
 import register.CommandsChecker;
-
-import java.util.ArrayList;
 
 public class LocalCommandManager extends PrototypesManager<Command> {
     private final LocalHistory history;

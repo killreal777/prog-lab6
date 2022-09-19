@@ -1,10 +1,10 @@
 package creators;
 
 import io.Terminal;
-import subject.model.Coordinates;
-import subject.model.FieldDefinitionException;
+import model.Coordinates;
+import exceptions.FieldDefinitionException;
 
-public class CoordinatesCreator extends Creator<Coordinates> {
+public class CoordinatesCreator extends AbstractCreator<Coordinates> {
     private enum CoordinatesArgument {
         X, Y
     }

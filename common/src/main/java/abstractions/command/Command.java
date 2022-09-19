@@ -1,7 +1,7 @@
-package abstractions.commands;
+package abstractions.command;
 
 import abstractions.prototypes.CloneablePrototype;
-import exception.ArgumentAmountException;
+import exceptions.ArgumentAmountException;
 
 /**
  * Superclass for all Commands

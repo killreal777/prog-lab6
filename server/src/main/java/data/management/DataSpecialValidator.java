@@ -1,7 +1,7 @@
 package data.management;
 
-import subject.model.FieldDefinitionException;
-import subject.model.Organization;
+import exceptions.FieldDefinitionException;
+import model.Organization;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;

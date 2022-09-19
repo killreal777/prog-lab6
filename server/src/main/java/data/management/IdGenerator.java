@@ -1,6 +1,6 @@
 package data.management;
 
-import subject.model.Organization;
+import model.Organization;
 
 import java.util.ArrayList;
 import java.util.Collection;

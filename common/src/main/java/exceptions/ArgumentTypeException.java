@@ -1,4 +1,4 @@
-package exception;
+package exceptions;
 
 public class ArgumentTypeException extends MessagedRuntimeException {
     public ArgumentTypeException(ArgumentType expectedArgumentType) {

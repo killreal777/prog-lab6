@@ -1,24 +1,20 @@
 package creators;
 
+import abstractions.creator.Creator;
 import io.Terminal;
 import io.TextFormatter;
-import subject.model.FieldDefinitionException;
+import exceptions.FieldDefinitionException;
 
-/**
- * Abstract class for creating and validation composite data objects
- *
- * @param <CreatingObject>
- *            composite data object
- */
 
-public abstract class Creator<CreatingObject> {
+public abstract class AbstractCreator<CreatingObject> implements Creator<CreatingObject> {
     protected final Terminal terminal;
     protected CreatingObject creatingObject;
 
-    protected Creator(Terminal terminal) {
+    protected AbstractCreator(Terminal terminal) {
         this.terminal = terminal;
     }
 
+    @Override
     public CreatingObject create() {
         try {
             initCreatingObjectIfItsNecessary();

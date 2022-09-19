@@ -1,7 +1,7 @@
 package register;
 
-import exception.FoundUnregisteredCommandsException;
-import exception.RegisteredCommandsNotFoundException;
+import exceptions.FoundUnregisteredCommandsException;
+import exceptions.RegisteredCommandsNotFoundException;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,9 +1,8 @@
 package abstractions.requests;
 
 import abstractions.prototypes.CloneablePrototype;
-import exception.ArgumentAmountException;
+import exceptions.ArgumentAmountException;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 public abstract class CommandRequest extends CloneablePrototype implements Serializable {
@@ -14,7 +13,7 @@ public abstract class CommandRequest extends CloneablePrototype implements Seria
     }
 
     /**
-     * Children of ArguedCommandRequest must override this method ArglessCommandRequest also overrides this method but
+     * Children of ArgedCommandRequest must override this method ArglessCommandRequest also overrides this method but
      * just for checking arguments absence
      */
     abstract public void setCommandArgs(String[] args);

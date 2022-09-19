@@ -3,7 +3,7 @@ package commands.creation;
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
 import io.TextFormatter;
-import subject.model.Organization;
+import model.Organization;
 
 import java.time.LocalDateTime;
 

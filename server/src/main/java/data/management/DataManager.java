@@ -3,7 +3,7 @@ package data.management;
 import data.xml.model.CollectionInfo;
 import data.xml.model.DataRoot;
 import io.Terminal;
-import subject.model.Organization;
+import model.Organization;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
