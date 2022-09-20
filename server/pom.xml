@@ -69,7 +69,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>server.ServerMain</mainClass>
+                            <mainClass>app.ServerMain</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

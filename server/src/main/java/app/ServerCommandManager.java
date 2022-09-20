@@ -1,4 +1,4 @@
-package server;
+package app;
 
 import abstractions.prototypes.PrototypesManager;
 import commands.abstractions.ServerCommand;

@@ -1,4 +1,4 @@
-package server;
+package app;
 
 import abstractions.command.Command;
 import abstractions.requests.ArguedCommandRequest;

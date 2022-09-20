@@ -14,7 +14,7 @@ public class ClientExecutionManager {
     private final CommandReader commandReader;
     private final LocalCommandManager localCommandManager;
     private final RequestsManager requestsManager;
-    private final ClientConnector connector;
+    private final Client connector;
 
 
     public ClientExecutionManager() {
@@ -23,9 +23,9 @@ public class ClientExecutionManager {
         this.commandReader = new CommandReader(terminal);
         this.requestsManager = new RequestsManager(terminal);
         this.localCommandManager = new LocalCommandManager(terminal, history);
-        this.connector = new ClientConnector();
+
         try {
-            connector.connect();
+            this.connector = new Client();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
