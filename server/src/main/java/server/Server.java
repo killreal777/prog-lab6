@@ -18,12 +18,12 @@ public class Server extends ServerNio {
 
     public Server(Function<CommandRequest, String> executeCommandFunction, Runnable checkTerminalRequest) throws IOException {
         super("localhost", 7770);
-        System.out.println("Creating server... ");
+        //System.out.println("Creating server... ");
         this.executeCommandFunction = executeCommandFunction;
         this.checkTerminalRequest = checkTerminalRequest;
         this.commandRequestSerializer = new Serializer<>();
         this.stringSerializer = new Serializer<>();
-        System.out.println("Server created!");
+        //System.out.println("Server created!");
     }
 
 
@@ -31,10 +31,10 @@ public class Server extends ServerNio {
     public void run() throws IOException {
         System.out.println("Server started");
         while (true) {
-            System.out.println("Server iteration started");
+            //System.out.println("Server iteration started");
             checkTerminalRequest.run();
             handleSelector();
-            System.out.println("Server iteration finished");
+            //System.out.println("Server iteration finished");
         }
     }
 
