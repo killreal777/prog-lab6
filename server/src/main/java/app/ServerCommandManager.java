@@ -16,9 +16,11 @@ import register.CommandsChecker;
 
 public class ServerCommandManager extends PrototypesManager<ServerCommand> {
     private final DataManager dataManager;
+    private final Save saveCommand;
 
     public ServerCommandManager(DataManager dataManager) {
         this.dataManager = dataManager;
+        this.saveCommand = new Save(dataManager);
         definePrototypes();
         CommandsChecker.check(CommandRecord.CommandType.SERVER, getPrototypesNameList(), "ServerCommandManager");
     }
@@ -42,5 +44,9 @@ public class ServerCommandManager extends PrototypesManager<ServerCommand> {
         addPrototype("print_ascending", new PrintAscending(dataManager));
         addPrototype("info", new Info(dataManager));
         //addPrototype("save", new Save(dataManager));
+    }
+
+    public Save getSaveCommand() {
+        return saveCommand;
     }
 }

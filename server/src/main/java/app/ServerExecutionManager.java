@@ -4,14 +4,23 @@ import abstractions.command.Command;
 import abstractions.requests.ArguedCommandRequest;
 import abstractions.requests.CommandRequest;
 import commands.abstractions.ArguedServerCommand;
+import commands.simple.argless.Save;
 import data.management.DataManager;
+
+import io.Terminal;
 
 
 public class ServerExecutionManager {
     private final ServerCommandManager commandsManager;
 
-    public ServerExecutionManager(DataManager dataManager) {
+    public ServerExecutionManager(Terminal terminal, DataManager dataManager) {
         this.commandsManager = new ServerCommandManager(dataManager);
+    }
+
+    public String executeSaveCommand() {
+        Save saveCommand = commandsManager.getSaveCommand();
+        saveCommand.execute();
+        return saveCommand.getResult();
     }
 
     public String executeCommand(CommandRequest request) {
