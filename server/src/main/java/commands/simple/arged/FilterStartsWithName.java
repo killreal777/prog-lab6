@@ -2,6 +2,7 @@ package commands.simple.arged;
 
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
+import io.Format;
 import io.TextFormatter;
 import model.Organization;
 
@@ -29,6 +30,6 @@ public class FilterStartsWithName extends ArguedServerCommand<String> {
 
     private void setBadResult() {
         String message = "В коллекции нет элементов, значение поля name которых начинается с заданной подстроки";
-        result = TextFormatter.format(message, TextFormatter.Format.RED);
+        result = TextFormatter.format(message, Format.RED);
     }
 }

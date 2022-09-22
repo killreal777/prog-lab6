@@ -1,6 +1,7 @@
 package commands.creation;
 
 import data.management.DataManager;
+import io.Format;
 import io.TextFormatter;
 import model.Organization;
 
@@ -30,6 +31,6 @@ public class AddIfMax extends Add {
 
     private void setBadResult() {
         this.result = "Значение элемента не превышает значение наибольщего элемента в коллекции";
-        this.result = TextFormatter.format(result, TextFormatter.Format.RED);
+        this.result = TextFormatter.format(result, Format.RED);
     }
 }

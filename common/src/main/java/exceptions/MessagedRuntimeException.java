@@ -1,5 +1,6 @@
 package exceptions;
 
+import io.Format;
 import io.TextFormatter;
 
 public class MessagedRuntimeException extends RuntimeException {
@@ -11,6 +12,6 @@ public class MessagedRuntimeException extends RuntimeException {
 
     @Override
     public String getMessage() {
-        return TextFormatter.format(message, TextFormatter.Format.RED);
+        return TextFormatter.format(message, Format.RED);
     }
 }

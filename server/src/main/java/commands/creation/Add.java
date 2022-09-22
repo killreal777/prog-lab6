@@ -3,6 +3,7 @@ package commands.creation;
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
 import exceptions.FieldDefinitionException;
+import io.Format;
 import io.TextFormatter;
 import model.Organization;
 
@@ -44,10 +45,10 @@ public class Add extends ArguedServerCommand<Organization> {
     }
 
     private void setGoodResult() {
-        this.result = TextFormatter.format("Элемент успешно добавлен", TextFormatter.Format.GREEN);
+        this.result = TextFormatter.format("Элемент успешно добавлен", Format.GREEN);
     }
 
     private void setBadResult() {
-        this.result = TextFormatter.format("Полное имя организации неуникально", TextFormatter.Format.RED);
+        this.result = TextFormatter.format("Полное имя организации неуникально", Format.RED);
     }
 }

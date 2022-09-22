@@ -2,6 +2,7 @@ package commands.simple.arged;
 
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
+import io.Format;
 import io.TextFormatter;
 import model.Organization;
 
@@ -33,11 +34,11 @@ public class RemoveByID extends ArguedServerCommand<Integer> {
 
     private void setGoodResult(String removedOrganizationName) {
         result = String.format("Удалена оганизация \"%s\"", removedOrganizationName);
-        result = TextFormatter.format(result, TextFormatter.Format.GREEN); // highlighting
+        result = TextFormatter.format(result, Format.GREEN);
     }
 
     private void setBadResult() {
         result = "В коллекции нет подходящего элемента";
-        result = TextFormatter.format(result, TextFormatter.Format.RED); // highlighting
+        result = TextFormatter.format(result, Format.RED);
     }
 }

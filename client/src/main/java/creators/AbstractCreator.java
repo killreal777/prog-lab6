@@ -1,6 +1,7 @@
 package creators;
 
 import abstractions.creator.Creator;
+import io.Format;
 import io.Terminal;
 import io.TextFormatter;
 import exceptions.FieldDefinitionException;
@@ -45,7 +46,7 @@ public abstract class AbstractCreator<CreatingObject> implements Creator<Creatin
 
     protected String formatRequirements(String requirements) {
         requirements = "(" + requirements + ") ";
-        return TextFormatter.format(requirements, TextFormatter.Format.GRAY_ITALIC);
+        return TextFormatter.format(requirements, Format.GRAY_ITALIC);
     }
 
     protected abstract CreatingObject createNewInstance();

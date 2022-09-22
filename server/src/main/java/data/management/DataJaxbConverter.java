@@ -1,5 +1,6 @@
 package data.management;
 
+import io.Format;
 import io.Terminal;
 import io.TextFormatter;
 import data.xml.model.DataRoot;
@@ -99,7 +100,7 @@ public class DataJaxbConverter {
 
     private String reenter(String message, String options) {
         String text = message + "\n" + options;
-        String invitationMessage = TextFormatter.format(text, TextFormatter.Format.RED);
+        String invitationMessage = TextFormatter.format(text, Format.RED);
         return terminal.readLineEntire(invitationMessage);
     }
 }

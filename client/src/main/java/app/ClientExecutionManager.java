@@ -3,7 +3,9 @@ package app;
 import abstractions.command.Command;
 import abstractions.requests.CommandRequest;
 import exceptions.MessagedRuntimeException;
+import io.Format;
 import io.Terminal;
+import io.TextFormatter;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -67,7 +69,7 @@ public class ClientExecutionManager {
         else if (requestsManager.contains(commandName))
             return executeCommandOnServer(commandName, commandArgs);
         else
-            return "COMMAND NOT FOUND";
+            return TextFormatter.format("Команда не нацдена", Format.RED);
     }
 
     private String executeCommandOnClient(String commandName, String[] commandArgs) {

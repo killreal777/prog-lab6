@@ -2,6 +2,7 @@ package commands.simple.argless;
 
 import commands.abstractions.ServerCommand;
 import data.management.DataManager;
+import io.Format;
 import io.TextFormatter;
 
 import java.io.FileNotFoundException;
@@ -18,10 +19,10 @@ public class Save extends ServerCommand {
         try {
             this.dataManager.saveData();
             result = "Коллекция сохранена";
-            result = TextFormatter.format(result, TextFormatter.Format.GREEN);
+            result = TextFormatter.format(result, Format.GREEN);
         } catch (FileNotFoundException e) {
             result = "Невозможно сохранить коллекцию в файл: недостаточно прав";
-            result = TextFormatter.format(result, TextFormatter.Format.RED);
+            result = TextFormatter.format(result, Format.RED);
         }
     }
 }

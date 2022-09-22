@@ -2,6 +2,7 @@ package commands.creation;
 
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
+import io.Format;
 import io.TextFormatter;
 import model.Organization;
 
@@ -59,16 +60,16 @@ public class Update extends ArguedServerCommand<Organization> {
 
     private void setGoodResult(String oldOrganizationName) {
         String message = String.format("Обновлена оганизация \"%s\"", oldOrganizationName);
-        result = TextFormatter.format(message, TextFormatter.Format.GREEN);
+        result = TextFormatter.format(message, Format.GREEN);
     }
 
     private void setBadResultIdNotUnique() {
         String message = "В коллекции нет элемента с указанным id";
-        result = TextFormatter.format(message, TextFormatter.Format.RED);
+        result = TextFormatter.format(message, Format.RED);
     }
 
     private void setBadResultFullNameNotUnique() {
         String message = "Полное имя организации неуникально";
-        result = TextFormatter.format(message, TextFormatter.Format.RED);
+        result = TextFormatter.format(message, Format.RED);
     }
 }

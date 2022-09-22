@@ -54,7 +54,7 @@ public class Terminal {
         } catch (NoSuchElementException e) {
             if (scriptExecutionManager.isScriptExecuting()) // means that script ended incorrectly
                 return readLineEntire(invitationMessage);
-            System.out.println(TextFormatter.format("Ctrl+D", TextFormatter.Format.RED)); // user entered Ctrl+D
+            System.out.println(TextFormatter.format("Ctrl+D", Format.RED)); // user entered Ctrl+D
             System.exit(0);
             throw new RuntimeException();
         }
