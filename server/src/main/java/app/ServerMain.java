@@ -14,7 +14,6 @@ public class ServerMain {
         final DataManager dataManager = new DataManager(terminal);
         final ServerExecutionManager serverExecutionManager = new ServerExecutionManager(terminal, dataManager);
         final ServerTerminalInputManager terminalInputManager = new ServerTerminalInputManager(terminal, serverExecutionManager::executeSaveCommand);
-        terminal.print("SERVER STARTED");
         terminalInputManager.checkTerminalRequest();
         final Server server = new Server(serverExecutionManager::executeCommand, terminalInputManager::checkTerminalRequest);
         new Save(dataManager).execute();

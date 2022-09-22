@@ -15,26 +15,6 @@
         <module>common</module>
     </modules>
 
-    <build>
-        <plugins>
-            <plugin>
-                <!-- Code formatting -->
-                <groupId>net.revelc.code.formatter</groupId>
-                <artifactId>formatter-maven-plugin</artifactId>
-                <version>2.19.0</version>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
