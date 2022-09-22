@@ -2,10 +2,12 @@ package commands.creation;
 
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
+import exceptions.FieldDefinitionException;
 import io.TextFormatter;
 import model.Organization;
 
 import java.time.LocalDateTime;
+import java.util.PriorityQueue;
 
 public class Add extends ArguedServerCommand<Organization> {
 
@@ -18,9 +20,13 @@ public class Add extends ArguedServerCommand<Organization> {
     @Override
     public void execute() {
         Organization organization = this.commandArgument;
-        defineAutogenFields(organization);
-        addOrganizationToTheCollection(organization);
-        setGoodResult();
+        if (collectionContainsFullName(dataManager.getCollection(), organization.getFullName())) {
+            setBadResult();
+        } else {
+            defineAutogenFields(organization);
+            addOrganizationToTheCollection(organization);
+            setGoodResult();
+        }
     }
 
     protected void addOrganizationToTheCollection(Organization organization) {
@@ -29,15 +35,19 @@ public class Add extends ArguedServerCommand<Organization> {
     }
 
     protected void defineAutogenFields(Organization organization) {
-        if (dataManager == null)
-            System.err.println("DATA MANAGER");
-        if (dataManager.getIdGenerator() == null)
-            System.err.println("ID GENERATOR");
         organization.setId(dataManager.getIdGenerator().generateId());
         organization.setCreationDate(LocalDateTime.now());
     }
 
+    private boolean collectionContainsFullName(PriorityQueue<Organization> collection, String fullName) {
+        return collection.stream().map(Organization::getFullName).anyMatch(fullName::equals);
+    }
+
     private void setGoodResult() {
         this.result = TextFormatter.format("Элемент успешно добавлен", TextFormatter.Format.GREEN);
+    }
+
+    private void setBadResult() {
+        this.result = TextFormatter.format("Полное имя организации неуникально", TextFormatter.Format.RED);
     }
 }

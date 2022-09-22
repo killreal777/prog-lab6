@@ -2,7 +2,7 @@
 <data>
     <collection_info>
         <collection_type>PriorityQueue&lt;Organization&gt;</collection_type>
-        <initialization_date>2022-09-22T12:34:52.484548</initialization_date>
+        <initialization_date>2022-09-22T14:18:26.000916900</initialization_date>
         <elements_amount>5</elements_amount>
     </collection_info>
     <collection>
@@ -73,28 +73,6 @@
             <type>OPEN_JOINT_STOCK_COMPANY</type>
         </organization>
         <organization>
-            <annualTurnover>11</annualTurnover>
-            <coordinates>
-                <x>11</x>
-                <y>11</y>
-            </coordinates>
-            <creationDateString>2022-09-22T09:55:09.240055100</creationDateString>
-            <employeesCount>11</employeesCount>
-            <fullName>11</fullName>
-            <id>5</id>
-            <name>11</name>
-            <officialAddress>
-                <town>
-                    <name>11</name>
-                    <x>11</x>
-                    <y>11</y>
-                    <z>11.0</z>
-                </town>
-                <zipCode>11</zipCode>
-            </officialAddress>
-            <type>TRUST</type>
-        </organization>
-        <organization>
             <annualTurnover>4</annualTurnover>
             <coordinates>
                 <x>4</x>
@@ -115,6 +93,28 @@
                 <zipCode>4</zipCode>
             </officialAddress>
             <type>TRUST</type>
+        </organization>
+        <organization>
+            <annualTurnover>200</annualTurnover>
+            <coordinates>
+                <x>1920</x>
+                <y>-1080</y>
+            </coordinates>
+            <creationDateString>2022-09-22T13:44:30.054932400</creationDateString>
+            <employeesCount>2</employeesCount>
+            <fullName>Alexey Abramov Incorparated</fullName>
+            <id>5</id>
+            <name>Lesha Inc</name>
+            <officialAddress>
+                <town>
+                    <name>Saint-Dopsagrad</name>
+                    <x>777</x>
+                    <y>333</y>
+                    <z>101.0</z>
+                </town>
+                <zipCode>Где же он живет?</zipCode>
+            </officialAddress>
+            <type>COMMERCIAL</type>
         </organization>
     </collection>
 </data>

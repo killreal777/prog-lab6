@@ -15,7 +15,7 @@ public class DataSpecialValidator {
     /**
      * Validates all special requirements
      */
-    public void validate(PriorityQueue<Organization> collection) throws FieldDefinitionException {
+    public void validateCollection(PriorityQueue<Organization> collection) throws FieldDefinitionException {
         checkIdUniqueness(collection);
         checkFullNameUniqueness(collection);
     }

@@ -2,13 +2,14 @@ package commands.creation;
 
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
-import exceptions.MessagedRuntimeException;
 import io.TextFormatter;
 import model.Address;
 import model.Organization;
 
-public class RemoveByAddress extends ArguedServerCommand<Address> {
+import java.util.function.Predicate;
 
+
+public class RemoveByAddress extends ArguedServerCommand<Address> {
     public RemoveByAddress(DataManager dataManager) {
         super(dataManager);
         this.name = "remove_any_by_official_address {officialAddress}";
@@ -16,39 +17,30 @@ public class RemoveByAddress extends ArguedServerCommand<Address> {
                 + "значение поля officialAddress которого эквивалентно заданному";
     }
 
+
     @Override
     public void execute() {
-        try {
-            Address address = this.commandArgument;
-            Organization organization = findMatchingOrganization(address);
-            removeOrganizationFromDataCollection(organization);
-            segGoodResult(organization.getName());
-        } catch (MessagedRuntimeException e) {
-            setBadResult();
-        }
+        Predicate<Organization> matchAddress = (org) -> org.getOfficialAddress().equals(this.commandArgument);
+        dataManager.getCollection().stream().filter(matchAddress).findFirst().
+                ifPresentOrElse(this::removeOrganizationFromDataCollection, this::setBadResult);
     }
 
-    private Organization findMatchingOrganization(Address address) throws MessagedRuntimeException {
-        for (Organization organization : dataManager.getCollection()) {
-            if (organization.getOfficialAddress().equals(address))
-                return organization;
-        }
-        throw new MessagedRuntimeException("Organization not found");
-    }
 
     private void removeOrganizationFromDataCollection(Organization organization) {
         dataManager.getCollection().remove(organization);
         dataManager.getIdGenerator().setToRemoved(organization.getId());
         dataManager.getCollectionInfo().decrementElementsAmount();
+        segGoodResult(organization.getName());
     }
+
 
     private void segGoodResult(String removedOrganizationName) {
         result = String.format("Удалена оганизация \"%s\"", removedOrganizationName);
-        result = TextFormatter.format(result, TextFormatter.Format.GREEN); // highlighting
+        result = TextFormatter.format(result, TextFormatter.Format.GREEN);
     }
 
     private void setBadResult() {
         result = "В коллекции нет подходящего элемента";
-        result = TextFormatter.format(result, TextFormatter.Format.RED); // highlighting
+        result = TextFormatter.format(result, TextFormatter.Format.RED);
     }
 }

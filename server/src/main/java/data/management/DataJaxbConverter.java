@@ -50,7 +50,7 @@ public class DataJaxbConverter {
     public DataRoot readXml() throws IOException {
         try {
             DataRoot dataRoot = unmarshalDataRoot();
-            validator.validate(dataRoot.getCollectionRoot().getCollection());
+            validator.validateCollection(dataRoot.getCollectionRoot().getCollection());
             return dataRoot;
         } catch (JAXBException e) {
             return handleIncorrectDataException("некорректная структура XML");

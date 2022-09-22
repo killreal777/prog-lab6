@@ -4,6 +4,7 @@ import data.management.DataManager;
 import io.TextFormatter;
 import model.Organization;
 
+
 public class AddIfMax extends Add {
     public AddIfMax(DataManager dataManager) {
         super(dataManager);
@@ -12,30 +13,20 @@ public class AddIfMax extends Add {
                 + "если его значение превышает значение наибольшего элемента этой коллекции";
     }
 
+
     @Override
     public void execute() {
         Organization organization = this.commandArgument;
-        if (isOrganizationMax(organization)) {
-            defineAutogenFields(organization);
-            addOrganizationToTheCollection(organization);
-            setGoodResult();
-        } else {
+        if (!isOrganizationMax(organization))
             setBadResult();
-        }
+        else
+            super.execute();
     }
 
     private boolean isOrganizationMax(Organization newOrganization) {
-        for (Organization organizationFormCollection : dataManager.getCollection()) {
-            if (newOrganization.compareTo(organizationFormCollection) <= 0) {
-                return false;
-            }
-        }
-        return true;
+        return dataManager.getCollection().stream().map(newOrganization::compareTo).allMatch((a) -> a > 0);
     }
 
-    private void setGoodResult() {
-        this.result = TextFormatter.format("Элемент успешно добавлен", TextFormatter.Format.GREEN);
-    }
 
     private void setBadResult() {
         this.result = "Значение элемента не превышает значение наибольщего элемента в коллекции";
