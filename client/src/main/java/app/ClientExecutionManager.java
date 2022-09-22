@@ -36,8 +36,10 @@ public class ClientExecutionManager {
 
     private void reconnect() {
         try {
-            terminal.print("Сервер недоступен, введите exit для выхода или что-нибудь другое для переподключения");
+            terminal.print("Сервер недоступен, введите exit для выхода или reconnect для переподключения");
             String input = terminal.readLineEntire();
+            while (!(input.equals("exit") || input.equals("reconnect")))
+                input = terminal.readLineEntire("Введите exit для выхода или reconnect для переподключения: ");
             if (input.equals("exit"))
                 executeCommand(input, new String[0]);
             else
