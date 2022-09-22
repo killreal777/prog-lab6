@@ -3,6 +3,7 @@ package server;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
+import java.net.SocketException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -67,16 +68,18 @@ public abstract class ServerNio {
     }
 
     private void handleKey(SelectionKey key) throws IOException {
-        //System.out.println("Handling selection key... ");
-        if (key.isValid()) {
-            if (key.isAcceptable())
-                accept(key);
-            if (key.isReadable())
-                read(key);
-            if (key.isWritable())
-                write(key);
+        try {
+            if (key.isValid()) {
+                if (key.isAcceptable())
+                    accept(key);
+                if (key.isReadable())
+                    read(key);
+                if (key.isWritable())
+                    write(key);
+            }
+        } catch (SocketException e) {
+            key.cancel();
         }
-        //System.out.println("Selection key handled!");
     }
 
 
