@@ -5,32 +5,26 @@ import data.management.DataManager;
 import io.TextFormatter;
 import model.Organization;
 
-import java.util.regex.Pattern;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
 
 public class FilterStartsWithName extends ArguedServerCommand<String> {
-
     public FilterStartsWithName(DataManager dataManager) {
         super(dataManager);
         this.name = "filter_starts_with_name name";
         this.description = "вывести элементы, значение поля name которых начинается с заданной подстроки";
     }
 
+
     @Override
     public void execute() {
-        Pattern nameRegex = Pattern.compile("^" + commandArgument + ".*");
-        writeAllMatchesToResult(nameRegex);
+        Consumer<String> writeResultLine = (line) -> result = result + line + "\n";
+        Predicate<Organization> startsWithName = (org) -> org.getName().startsWith(commandArgument);
+        dataManager.getCollection().stream().sorted().filter(startsWithName).
+                map(Organization::toString).forEach(writeResultLine);
         if (result.equals(""))
             setBadResult();
-    }
-
-    private void writeAllMatchesToResult(Pattern nameRegex) {
-        for (Organization organization : dataManager.getCollection()) {
-            if (!nameRegex.matcher(organization.getName()).matches())
-                continue;
-            if (!result.equals(""))
-                result += "\n";
-            result += organization.toString();
-        }
     }
 
     private void setBadResult() {

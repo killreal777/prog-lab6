@@ -4,6 +4,9 @@ import commands.abstractions.ServerCommand;
 import data.management.DataManager;
 import model.Organization;
 
+import java.util.function.Consumer;
+
+
 public class Show extends ServerCommand {
     public Show(DataManager dataManager) {
         super(dataManager);
@@ -13,12 +16,9 @@ public class Show extends ServerCommand {
 
     @Override
     public void execute() {
-        for (Organization org : dataManager.getCollection()) {
-            if (result != "")
-                result += "\n";
-            this.result += org.toString();
-        }
+        Consumer<String> writeResultLine = (line) -> result = result + line + "\n";
+        dataManager.getCollection().stream().sorted().map(Organization::toString).forEach(writeResultLine);
         if (result.equals(""))
-            this.result = "Коллекция пуста";
+            result = "Коллекция пуста";
     }
 }

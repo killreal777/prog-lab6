@@ -4,7 +4,8 @@ import commands.abstractions.ServerCommand;
 import data.management.DataManager;
 import model.Organization;
 
-import java.util.PriorityQueue;
+import java.util.function.Consumer;
+
 
 public class Head extends ServerCommand {
     public Head(DataManager dataManager) {
@@ -15,10 +16,9 @@ public class Head extends ServerCommand {
 
     @Override
     public void execute() {
-        PriorityQueue<Organization> collection = dataManager.getCollection();
-        if (collection.isEmpty())
-            this.result = "Коллекция пуста";
-        else
-            this.result = collection.peek().toString();
+        Consumer<String> writeResultLine = (line) -> result = result + line;
+        dataManager.getCollection().stream().findFirst().map(Organization::toString).ifPresent(writeResultLine);
+        if (result.equals(""))
+            result = "Коллекция пуста";
     }
 }

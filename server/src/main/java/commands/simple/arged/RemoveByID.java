@@ -2,9 +2,11 @@ package commands.simple.arged;
 
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
-import exceptions.MessagedRuntimeException;
 import io.TextFormatter;
 import model.Organization;
+
+import java.util.function.Predicate;
+
 
 public class RemoveByID extends ArguedServerCommand<Integer> {
     public RemoveByID(DataManager dataManager) {
@@ -13,33 +15,23 @@ public class RemoveByID extends ArguedServerCommand<Integer> {
         this.description = " удалить элемент из коллекции по его id";
     }
 
+
     @Override
     public void execute() {
-        try {
-            Integer id = this.commandArgument;
-            Organization organization = findMatchingOrganization(id);
-            removeOrganizationFromDataCollection(organization);
-            segGoodResult(organization.getName());
-        } catch (MessagedRuntimeException e) {
-            setBadResult();
-        }
+        Predicate<Organization> matchId = (org) -> org.getId().equals(this.commandArgument);
+        dataManager.getCollection().stream().filter(matchId).findFirst().
+                ifPresentOrElse(this::removeOrganizationFromDataCollection, this::setBadResult);
     }
 
-    private Organization findMatchingOrganization(Integer id) throws MessagedRuntimeException {
-        for (Organization organization : dataManager.getCollection()) {
-            if (organization.getId().equals(id))
-                return organization;
-        }
-        throw new MessagedRuntimeException("Organization not found");
-    }
 
     private void removeOrganizationFromDataCollection(Organization organization) {
         dataManager.getCollection().remove(organization);
         dataManager.getIdGenerator().setToRemoved(organization.getId());
         dataManager.getCollectionInfo().decrementElementsAmount();
+        setGoodResult(organization.getName());
     }
 
-    private void segGoodResult(String removedOrganizationName) {
+    private void setGoodResult(String removedOrganizationName) {
         result = String.format("Удалена оганизация \"%s\"", removedOrganizationName);
         result = TextFormatter.format(result, TextFormatter.Format.GREEN); // highlighting
     }

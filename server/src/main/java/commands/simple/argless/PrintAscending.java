@@ -2,6 +2,10 @@ package commands.simple.argless;
 
 import commands.abstractions.ServerCommand;
 import data.management.DataManager;
+import model.Organization;
+
+import java.util.function.Consumer;
+
 
 public class PrintAscending extends ServerCommand {
     public PrintAscending(DataManager dataManager) {
@@ -12,12 +16,9 @@ public class PrintAscending extends ServerCommand {
 
     @Override
     public void execute() {
-        for (Object organization : dataManager.getCollection().stream().sorted().toArray()) {
-            if (result != "")
-                result += "\n";
-            this.result += organization.toString();
-        }
+        Consumer<String> writeResultLine = (line) -> result = result + line + "\n";
+        dataManager.getCollection().stream().sorted().map(Organization::toString).forEach(writeResultLine);
         if (result.equals(""))
-            this.result = "Коллекция пуста";
+            result = "Коллекция пуста";
     }
 }
