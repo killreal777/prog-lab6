@@ -2,13 +2,16 @@ package app;
 
 import abstractions.command.Command;
 import abstractions.requests.CommandRequest;
+import exceptions.DeserializationException;
 import exceptions.MessagedRuntimeException;
 import io.Format;
 import io.Terminal;
 import io.TextFormatter;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.net.ConnectException;
+import java.net.SocketException;
 
 
 public class ClientExecutionManager {
@@ -17,7 +20,7 @@ public class ClientExecutionManager {
     private final CommandReader commandReader;
     private final LocalCommandManager localCommandManager;
     private final RequestsManager requestsManager;
-    private Client connector;
+    private final Client connector;
 
 
     public ClientExecutionManager() {
@@ -33,6 +36,7 @@ public class ClientExecutionManager {
             reconnect();
         }
     }
+
 
     private void reconnect() {
         try {
@@ -50,7 +54,6 @@ public class ClientExecutionManager {
     }
 
 
-
     public void executeNextCommand() {
         try {
             CommandReader.UserInput input = commandReader.readCommand();
@@ -58,7 +61,7 @@ public class ClientExecutionManager {
             String[] args = input.getCommandArgs();
             String commandResult = executeCommand(name, args);
             terminal.print(commandResult);
-        } catch (IOException e) {
+        } catch (IOException | DeserializationException e) {
             reconnect();
         } catch (MessagedRuntimeException e) {
             terminal.print(e.getMessage());

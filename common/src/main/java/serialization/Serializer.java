@@ -1,5 +1,6 @@
 package serialization;
 
+import exceptions.DeserializationException;
 import exceptions.MessagedRuntimeException;
 
 import java.io.*;
@@ -13,8 +14,7 @@ public class Serializer<T extends Serializable> {
             objectOutputStream.writeObject(object);
             return byteArrayOutputStream.toByteArray();
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new MessagedRuntimeException("Serialization exception");
+            throw new RuntimeException(e);
         }
     }
 
@@ -24,8 +24,7 @@ public class Serializer<T extends Serializable> {
             ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
             return (T) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-            throw new MessagedRuntimeException("Deserialization exception");
+            throw new DeserializationException();
         }
     }
 
@@ -34,8 +33,7 @@ public class Serializer<T extends Serializable> {
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
             return (T) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-            throw new MessagedRuntimeException("Deserialization exception");
+            throw new DeserializationException();
         }
     }
 }

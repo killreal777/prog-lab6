@@ -1,9 +1,12 @@
 package server;
 
 import abstractions.requests.CommandRequest;
+import exceptions.ConnectionException;
+import exceptions.DeserializationException;
 import serialization.Serializer;
 
 import java.io.IOException;
+import java.net.SocketException;
 import java.nio.ByteBuffer;
 import java.util.function.Function;
 
@@ -31,18 +34,20 @@ public class Server extends ServerNio {
     public void run() throws IOException {
         System.out.println("Server started");
         while (true) {
-            //System.out.println("Server iteration started");
             checkTerminalRequest.run();
             handleSelector();
-            //System.out.println("Server iteration finished");
         }
     }
 
 
     @Override
     protected void handleRequestBuffer(ByteBuffer requestBuffer) {
-        CommandRequest request = commandRequestSerializer.deserializeFormByteArray(requestBuffer.array());
-        response = executeCommandFunction.apply(request);
+        try {
+            CommandRequest request = commandRequestSerializer.deserializeFormByteArray(requestBuffer.array());
+            response = executeCommandFunction.apply(request);
+        } catch (DeserializationException e) {
+            throw new ConnectionException();
+        }
     }
 
     @Override

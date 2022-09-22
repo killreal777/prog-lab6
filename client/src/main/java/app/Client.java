@@ -3,6 +3,7 @@ package app;
 import abstractions.requests.CommandRequest;
 import serialization.Serializer;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -12,10 +13,12 @@ public class Client {
     private final Serializer<String> stringSerializer;
     private Socket clientSocket;
 
+
     public Client() {
         this.requestSerializer = new Serializer<>();
         this.stringSerializer = new Serializer<>();
     }
+
 
     public void connect() throws IOException {
         this.clientSocket = new Socket("localhost", 7770);
