@@ -8,15 +8,19 @@ import java.net.Socket;
 
 
 public class Client {
-    private final Socket clientSocket;
     private final Serializer<CommandRequest> requestSerializer;
     private final Serializer<String> stringSerializer;
+    private Socket clientSocket;
 
-    public Client() throws IOException {
-        this.clientSocket = new Socket("localhost", 7770);
+    public Client() {
         this.requestSerializer = new Serializer<>();
         this.stringSerializer = new Serializer<>();
     }
+
+    public void connect() throws IOException {
+        this.clientSocket = new Socket("localhost", 7770);
+    }
+
 
     private void sendRequest(CommandRequest request) throws IOException {
         clientSocket.getOutputStream().write(requestSerializer.serializeToByteArray(request));

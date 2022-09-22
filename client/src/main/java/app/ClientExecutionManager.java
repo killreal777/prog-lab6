@@ -6,6 +6,7 @@ import exceptions.MessagedRuntimeException;
 import io.Terminal;
 
 import java.io.IOException;
+import java.net.ConnectException;
 
 
 public class ClientExecutionManager {
@@ -14,7 +15,7 @@ public class ClientExecutionManager {
     private final CommandReader commandReader;
     private final LocalCommandManager localCommandManager;
     private final RequestsManager requestsManager;
-    private final Client connector;
+    private Client connector;
 
 
     public ClientExecutionManager() {
@@ -23,13 +24,27 @@ public class ClientExecutionManager {
         this.commandReader = new CommandReader(terminal);
         this.requestsManager = new RequestsManager(terminal);
         this.localCommandManager = new LocalCommandManager(terminal, history);
-
+        this.connector = new Client();
         try {
-            this.connector = new Client();
+            connector.connect();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            reconnect();
         }
     }
+
+    private void reconnect() {
+        try {
+            terminal.print("Сервер недоступен, введите exit для выхода или что-нибудь другое для переподключения");
+            String input = terminal.readLineEntire();
+            if (input.equals("exit"))
+                executeCommand(input, new String[0]);
+            else
+                connector.connect();
+        } catch (IOException e) {
+            reconnect();
+        }
+    }
+
 
 
     public void executeNextCommand() {
@@ -39,12 +54,14 @@ public class ClientExecutionManager {
             String[] args = input.getCommandArgs();
             String commandResult = executeCommand(name, args);
             terminal.print(commandResult);
+        } catch (IOException e) {
+            reconnect();
         } catch (MessagedRuntimeException e) {
             terminal.print(e.getMessage());
         }
     }
 
-    private String executeCommand(String commandName, String[] commandArgs) {
+    private String executeCommand(String commandName, String[] commandArgs) throws IOException {
         if (localCommandManager.contains(commandName))
             return executeCommandOnClient(commandName, commandArgs);
         else if (requestsManager.contains(commandName))
@@ -61,13 +78,13 @@ public class ClientExecutionManager {
         return command.getResult();
     }
 
-    private String executeCommandOnServer(String commandName, String[] commandArgs) {
+    private String executeCommandOnServer(String commandName, String[] commandArgs) throws IOException {
         CommandRequest request = requestsManager.clonePrototype(commandName);
         request.setCommandArgs(commandArgs);
         try {
             return connector.interact(request);
-        } catch (IOException | ClassNotFoundException e) {
-            return "Сервер временно недоступен";
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 }
