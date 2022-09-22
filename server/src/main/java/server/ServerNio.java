@@ -91,7 +91,7 @@ public abstract class ServerNio {
     private void read(SelectionKey key) throws IOException {
         //System.out.print("Reading... ");
         SocketChannel client = (SocketChannel) key.channel();
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024);
         client.read(buffer);
         handleRequestBuffer(buffer);
         client.register(key.selector(), SelectionKey.OP_WRITE);

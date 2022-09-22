@@ -17,7 +17,7 @@ public class Organization implements Comparable<Organization>, Serializable {
     private String name; // not null, not empty String
     private Coordinates coordinates; // not null
     private LocalDateTime creationDate; // not null, autogenerate
-    private String creationDateString; // this field is for XML storing
+    private String creationDateString; // this field is for XML serialization
     private Long annualTurnover; // not null, > 0
     private String fullName; // not null, unique
     private int employeesCount; // > 0
