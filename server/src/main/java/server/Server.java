@@ -3,10 +3,11 @@ package server;
 import abstractions.requests.CommandRequest;
 import exceptions.ConnectionException;
 import exceptions.DeserializationException;
+import io.Format;
+import io.TextFormatter;
 import serialization.Serializer;
 
 import java.io.IOException;
-import java.net.SocketException;
 import java.nio.ByteBuffer;
 import java.util.function.Function;
 
@@ -20,19 +21,17 @@ public class Server extends ServerNio {
 
 
     public Server(Function<CommandRequest, String> executeCommandFunction, Runnable checkTerminalRequest) throws IOException {
-        super("localhost", 7770);
-        //System.out.println("Creating server... ");
+        super("localhost", 7700);
         this.executeCommandFunction = executeCommandFunction;
         this.checkTerminalRequest = checkTerminalRequest;
         this.commandRequestSerializer = new Serializer<>();
         this.stringSerializer = new Serializer<>();
-        //System.out.println("Server created!");
     }
 
 
     @Override
     public void run() throws IOException {
-        System.out.println("Server started");
+        System.out.println(TextFormatter.format("Сервер начал работу", Format.BOLD));
         while (true) {
             checkTerminalRequest.run();
             handleSelector();

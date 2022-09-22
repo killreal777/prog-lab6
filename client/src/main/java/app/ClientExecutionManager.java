@@ -8,10 +8,7 @@ import io.Format;
 import io.Terminal;
 import io.TextFormatter;
 
-import java.io.EOFException;
 import java.io.IOException;
-import java.net.ConnectException;
-import java.net.SocketException;
 
 
 public class ClientExecutionManager {

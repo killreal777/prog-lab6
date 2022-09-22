@@ -21,7 +21,7 @@ public class Client {
 
 
     public void connect() throws IOException {
-        this.clientSocket = new Socket("localhost", 7770);
+        this.clientSocket = new Socket("localhost", 7700);
     }
 
 

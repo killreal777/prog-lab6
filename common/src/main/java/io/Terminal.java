@@ -1,46 +1,32 @@
 package io;
 
 import java.io.FileNotFoundException;
-import java.io.Serializable;
 import java.util.NoSuchElementException;
 
-/**
- * Class for input from Scanner managed by ScannerManager and output to System.out
- */
 
 public class Terminal {
     private final ScannerManager scannerManager;
     private final ScriptExecutionManager scriptExecutionManager;
+
 
     public Terminal() {
         this.scannerManager = new ScannerManager();
         this.scriptExecutionManager = new ScriptExecutionManager(scannerManager);
     }
 
-    /**
-     * Read line with splitting by whitespaces and default invitation message (">>> ")
-     */
+
     public String[] readLineSplit() {
         return readLineSplit(">>> ");
     }
 
-    /**
-     * Read line with splitting by whitespaces and custom invitation message
-     */
     public String[] readLineSplit(String invitationMessage) {
         return readLineEntire(invitationMessage).split("\\s+");
     }
 
-    /**
-     * Read line without splitting by whitespaces (however, with trimming) and default invitation message (">>> ")
-     */
     public String readLineEntire() {
         return readLineEntire(">>> ");
     }
 
-    /**
-     * Read line without splitting by whitespaces (however, with trimming) and custom invitation message
-     */
     public String readLineEntire(String invitationMessage) {
         scriptExecutionManager.checkIfScriptIsEnded();
         if (scriptExecutionManager.isScriptNotExecuting())
@@ -60,16 +46,11 @@ public class Terminal {
         }
     }
 
-    /**
-     * Read and execute script
-     */
+
     public void readScript(String fileName) throws FileNotFoundException {
         scriptExecutionManager.createScriptScanner(fileName);
     }
 
-    /**
-     * Print text to System.out
-     */
     public void print(String message) {
         System.out.print(message + "\n");
     }

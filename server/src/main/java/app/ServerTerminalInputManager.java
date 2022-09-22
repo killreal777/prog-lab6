@@ -32,7 +32,9 @@ public class ServerTerminalInputManager {
 
     private void checkSaveCommand() {
         String input = terminal.readLineEntire("");
-        if (input.equals("save"))
+        if (input.equals("save") || input.equals("exit"))
             terminal.print(executeSaveCommandMethodLink.get());
+        if (input.equals("exit"))
+            System.exit(0);
     }
 }

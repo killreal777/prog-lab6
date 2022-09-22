@@ -1,8 +1,9 @@
 package app;
 
-import commands.simple.argless.Save;
 import data.management.DataManager;
+import io.Format;
 import io.Terminal;
+import io.TextFormatter;
 import server.Server;
 
 import java.io.IOException;
@@ -14,9 +15,8 @@ public class ServerMain {
         final DataManager dataManager = new DataManager(terminal);
         final ServerExecutionManager serverExecutionManager = new ServerExecutionManager(terminal, dataManager);
         final ServerTerminalInputManager terminalInputManager = new ServerTerminalInputManager(terminal, serverExecutionManager::executeSaveCommand);
-        terminalInputManager.checkTerminalRequest();
         final Server server = new Server(serverExecutionManager::executeCommand, terminalInputManager::checkTerminalRequest);
-        new Save(dataManager).execute();
+        terminal.print(TextFormatter.format("Доступные команды: save, exit", Format.YELLOW));
         server.run();
     }
 }

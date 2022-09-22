@@ -2,8 +2,8 @@
 <data>
     <collection_info>
         <collection_type>PriorityQueue&lt;Organization&gt;</collection_type>
-        <initialization_date>2022-09-23T00:46:41.830288173</initialization_date>
-        <elements_amount>5</elements_amount>
+        <initialization_date>2022-09-23T01:41:11.625847612</initialization_date>
+        <elements_amount>1</elements_amount>
     </collection_info>
     <collection>
         <organization>
@@ -12,7 +12,7 @@
                 <x>1</x>
                 <y>1</y>
             </coordinates>
-            <creationDateString>2022-09-22T09:53:31.965298200</creationDateString>
+            <creationDateString>2022-09-23T01:34:20.302889468</creationDateString>
             <employeesCount>1</employeesCount>
             <fullName>1</fullName>
             <id>1</id>
@@ -21,100 +21,12 @@
                 <town>
                     <name>1</name>
                     <x>1</x>
-                    <y>1</y>
+                    <y>11</y>
                     <z>1.0</z>
                 </town>
                 <zipCode>1</zipCode>
             </officialAddress>
             <type>TRUST</type>
-        </organization>
-        <organization>
-            <annualTurnover>2</annualTurnover>
-            <coordinates>
-                <x>2</x>
-                <y>2</y>
-            </coordinates>
-            <creationDateString>2022-09-22T09:55:28.682095</creationDateString>
-            <employeesCount>2</employeesCount>
-            <fullName>2</fullName>
-            <id>2</id>
-            <name>2</name>
-            <officialAddress>
-                <town>
-                    <name>2</name>
-                    <x>2</x>
-                    <y>2</y>
-                    <z>2.0</z>
-                </town>
-                <zipCode>2</zipCode>
-            </officialAddress>
-            <type>PRIVATE_LIMITED_COMPANY</type>
-        </organization>
-        <organization>
-            <annualTurnover>3</annualTurnover>
-            <coordinates>
-                <x>3</x>
-                <y>3</y>
-            </coordinates>
-            <creationDateString>2022-09-22T09:53:44.758846700</creationDateString>
-            <employeesCount>3</employeesCount>
-            <fullName>3</fullName>
-            <id>3</id>
-            <name>3</name>
-            <officialAddress>
-                <town>
-                    <name>3</name>
-                    <x>3</x>
-                    <y>3</y>
-                    <z>3.0</z>
-                </town>
-                <zipCode>3</zipCode>
-            </officialAddress>
-            <type>OPEN_JOINT_STOCK_COMPANY</type>
-        </organization>
-        <organization>
-            <annualTurnover>4</annualTurnover>
-            <coordinates>
-                <x>4</x>
-                <y>4</y>
-            </coordinates>
-            <creationDateString>2022-09-22T09:54:01.770786400</creationDateString>
-            <employeesCount>4</employeesCount>
-            <fullName>4</fullName>
-            <id>4</id>
-            <name>4</name>
-            <officialAddress>
-                <town>
-                    <name>4</name>
-                    <x>4</x>
-                    <y>4</y>
-                    <z>4.0</z>
-                </town>
-                <zipCode>4</zipCode>
-            </officialAddress>
-            <type>TRUST</type>
-        </organization>
-        <organization>
-            <annualTurnover>200</annualTurnover>
-            <coordinates>
-                <x>1920</x>
-                <y>-1080</y>
-            </coordinates>
-            <creationDateString>2022-09-22T13:44:30.054932400</creationDateString>
-            <employeesCount>2</employeesCount>
-            <fullName>Alexey Abramov Incorparated</fullName>
-            <id>5</id>
-            <name>Lesha Inc</name>
-            <officialAddress>
-                <town>
-                    <name>Saint-Dopsagrad</name>
-                    <x>777</x>
-                    <y>333</y>
-                    <z>101.0</z>
-                </town>
-                <zipCode>Где же он живет?</zipCode>
-            </officialAddress>
-            <type>COMMERCIAL</type>
         </organization>
     </collection>
 </data>
