@@ -27,4 +27,9 @@ public abstract class CommandRequest extends CloneablePrototype implements Seria
     public String getCommandName() {
         return commandName;
     }
+
+    @Override
+    public String toString() {
+        return commandName;
+    }
 }

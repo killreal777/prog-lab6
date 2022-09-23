@@ -86,6 +86,7 @@ public class ClientExecutionManager {
     private String executeCommandOnServer(String commandName, String[] commandArgs) throws IOException {
         CommandRequest request = requestsManager.clonePrototype(commandName);
         request.setCommandArgs(commandArgs);
+        history.addRequest(request);
         try {
             return client.interact(request);
         } catch (ClassNotFoundException e) {
