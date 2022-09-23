@@ -135,7 +135,7 @@ public class Organization implements Comparable<Organization>, Serializable {
         return "\033[1;97m" + String.format("ORGANIZATION id%s \n", id) + "\033[0m"
                 + String.format("Name: \"%s\"\tFull name: \"%s\"\tType: \"%s\"\n", name, fullName, type)
                 + String.format("Annual turnover: %s\tEmployees count: %s\n", annualTurnover, employeesCount)
-                + String.format("ADDRESS %s\tsubject.Coordinates: %s\n", officialAddress, coordinates)
+                + String.format("ADDRESS %s\tCoordinates: %s\n", officialAddress, coordinates)
                 + String.format("Creation date: %s %s", dateTime[0], dateTime[1]);
     }
 

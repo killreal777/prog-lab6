@@ -72,7 +72,7 @@ public class ClientExecutionManager {
         else if (requestsManager.contains(commandName))
             return executeCommandOnServer(commandName, commandArgs);
         else
-            return TextFormatter.format("Команда не нацдена", Format.RED);
+            return TextFormatter.format("Команда не найдена", Format.RED);
     }
 
     private String executeCommandOnClient(String commandName, String[] commandArgs) {

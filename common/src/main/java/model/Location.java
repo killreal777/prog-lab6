@@ -67,7 +67,7 @@ public class Location implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("subject.Location: \"%s\" [%d; %d; %.2f]", name, x, y, z);
+        return String.format("Location: \"%s\" [%d; %d; %.2f]", name, x, y, z);
     }
 
     @Override
