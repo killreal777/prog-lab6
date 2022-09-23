@@ -32,7 +32,7 @@ public abstract class ServerNio {
         SocketAddress serverSocketAddress = new InetSocketAddress(host, port);
         serverSocketChannel.socket().bind(serverSocketAddress);
         serverSocketChannel.configureBlocking(false);
-        serverSocketChannel.register(selector, serverSocketChannel.validOps());
+        serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
     }
 
 

@@ -23,10 +23,10 @@ public class DataFile {
     }
 
     private String getFilePathFromEnv() {
-        String filePath = System.getenv("L");
+        String filePath = System.getenv("LAB6");
         if (filePath != null)
             return filePath;
-        String message = "Переменная окружения \"LAB5_DATA_FILE\" не найдена";
+        String message = "Переменная окружения \"LAB6\" не найдена";
         String options = "Введите путь к другому файлу: ";
         return reenter(message, options);
     }

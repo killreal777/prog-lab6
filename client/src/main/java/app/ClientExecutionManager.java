@@ -17,7 +17,7 @@ public class ClientExecutionManager {
     private final CommandReader commandReader;
     private final LocalCommandManager localCommandManager;
     private final RequestsManager requestsManager;
-    private final Client connector;
+    private final Client client;
 
 
     public ClientExecutionManager() {
@@ -26,9 +26,9 @@ public class ClientExecutionManager {
         this.commandReader = new CommandReader(terminal);
         this.requestsManager = new RequestsManager(terminal);
         this.localCommandManager = new LocalCommandManager(terminal, history);
-        this.connector = new Client();
+        this.client = new Client();
         try {
-            connector.connect();
+            client.connect();
         } catch (IOException e) {
             reconnect();
         }
@@ -44,7 +44,8 @@ public class ClientExecutionManager {
             if (input.equals("exit"))
                 executeCommand(input, new String[0]);
             else
-                connector.connect();
+                client.connect();
+            System.out.println(TextFormatter.format("Соединение установлено", Format.GREEN));
         } catch (IOException e) {
             reconnect();
         }
@@ -86,7 +87,7 @@ public class ClientExecutionManager {
         CommandRequest request = requestsManager.clonePrototype(commandName);
         request.setCommandArgs(commandArgs);
         try {
-            return connector.interact(request);
+            return client.interact(request);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

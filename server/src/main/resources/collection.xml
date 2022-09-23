@@ -2,31 +2,8 @@
 <data>
     <collection_info>
         <collection_type>PriorityQueue&lt;Organization&gt;</collection_type>
-        <initialization_date>2022-09-23T01:41:11.625847612</initialization_date>
-        <elements_amount>1</elements_amount>
+        <initialization_date>2022-09-23T13:20:43.365930900</initialization_date>
+        <elements_amount>0</elements_amount>
     </collection_info>
-    <collection>
-        <organization>
-            <annualTurnover>1</annualTurnover>
-            <coordinates>
-                <x>1</x>
-                <y>1</y>
-            </coordinates>
-            <creationDateString>2022-09-23T01:34:20.302889468</creationDateString>
-            <employeesCount>1</employeesCount>
-            <fullName>1</fullName>
-            <id>1</id>
-            <name>1</name>
-            <officialAddress>
-                <town>
-                    <name>1</name>
-                    <x>1</x>
-                    <y>11</y>
-                    <z>1.0</z>
-                </town>
-                <zipCode>1</zipCode>
-            </officialAddress>
-            <type>TRUST</type>
-        </organization>
-    </collection>
+    <collection/>
 </data>

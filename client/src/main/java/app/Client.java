@@ -27,7 +27,6 @@ public class Client {
 
     private void sendRequest(CommandRequest request) throws IOException {
         clientSocket.getOutputStream().write(requestSerializer.serializeToByteArray(request));
-        System.out.println("REQUEST IS SEND");
     }
 
     private String getResponse() throws IOException {
