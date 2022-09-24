@@ -51,7 +51,7 @@ public class ClientExecutionManager {
         }
     }
 
-
+    
     public void executeNextCommand() {
         try {
             CommandReader.UserInput input = commandReader.readCommand();

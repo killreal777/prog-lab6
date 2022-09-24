@@ -7,11 +7,17 @@ import java.util.NoSuchElementException;
 public class Terminal {
     private final ScannerManager scannerManager;
     private final ScriptExecutionManager scriptExecutionManager;
+    private Runnable preExitCall;
 
 
     public Terminal() {
         this.scannerManager = new ScannerManager();
         this.scriptExecutionManager = new ScriptExecutionManager(scannerManager);
+        this.preExitCall = () -> {};
+    }
+
+    public void setPreExitCall(Runnable preExitCall) {
+        this.preExitCall = preExitCall;
     }
 
 
@@ -41,6 +47,7 @@ public class Terminal {
             if (scriptExecutionManager.isScriptExecuting()) // means that script ended incorrectly
                 return readLineEntire(invitationMessage);
             System.out.println(TextFormatter.format("Ctrl+D", Format.RED)); // user entered Ctrl+D
+            preExitCall.run();
             System.exit(0);
             throw new RuntimeException();
         }

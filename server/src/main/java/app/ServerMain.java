@@ -16,6 +16,7 @@ public class ServerMain {
         final ServerExecutionManager serverExecutionManager = new ServerExecutionManager(terminal, dataManager);
         final ServerTerminalInputManager terminalInputManager = new ServerTerminalInputManager(terminal, serverExecutionManager::executeSaveCommand);
         final Server server = new Server(serverExecutionManager::executeCommand, terminalInputManager::checkTerminalRequest);
+        terminal.setPreExitCall(serverExecutionManager::executeSaveCommand);
         terminal.print(TextFormatter.format("Доступные команды: save, exit", Format.YELLOW));
         server.run();
     }
