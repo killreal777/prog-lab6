@@ -1,8 +1,11 @@
 out
 common/target
 common/src/test
+common/src/main/resourses
 client/target
 client/src/test
+client/src/main/resourses
 server/target
 server/src/test
+server/src/main/resourses
 .idea
