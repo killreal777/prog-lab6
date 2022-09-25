@@ -1,4 +1,4 @@
-package io;
+package script;
 
 import exceptions.MessagedRuntimeException;
 

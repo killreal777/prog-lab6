@@ -1,25 +1,16 @@
 package io;
 
-import java.io.FileNotFoundException;
-import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 
 public class Terminal {
-    private final ScannerManager scannerManager;
-    private final ScriptExecutionManager scriptExecutionManager;
-    private Runnable preExitCall;
+    private final Scanner scanner;
 
 
     public Terminal() {
-        this.scannerManager = new ScannerManager();
-        this.scriptExecutionManager = new ScriptExecutionManager(scannerManager);
-        this.preExitCall = () -> {};
+        this.scanner = new Scanner(System.in);
     }
-
-    public void setPreExitCall(Runnable preExitCall) {
-        this.preExitCall = preExitCall;
-    }
-
+    
 
     public String[] readLineSplit() {
         return readLineSplit(">>> ");
@@ -34,29 +25,15 @@ public class Terminal {
     }
 
     public String readLineEntire(String invitationMessage) {
-        scriptExecutionManager.checkIfScriptIsEnded();
-        if (scriptExecutionManager.isScriptNotExecuting())
-            System.out.print(invitationMessage);
+        System.out.print(invitationMessage);
         return readLine(invitationMessage);
     }
+    
 
-    private String readLine(String invitationMessage) {
-        try {
-            return scannerManager.getCurrentScanner().nextLine().trim();
-        } catch (NoSuchElementException e) {
-            if (scriptExecutionManager.isScriptExecuting()) // means that script ended incorrectly
-                return readLineEntire(invitationMessage);
-            System.out.println(TextFormatter.format("Ctrl+D", Format.RED)); // user entered Ctrl+D
-            preExitCall.run();
-            System.exit(0);
-            throw new RuntimeException();
-        }
+    protected String readLine(String invitationMessage) {
+        return scanner.nextLine().trim();
     }
-
-
-    public void readScript(String fileName) throws FileNotFoundException {
-        scriptExecutionManager.createScriptScanner(fileName);
-    }
+    
 
     public void print(String message) {
         System.out.print(message + "\n");

@@ -2,19 +2,22 @@ package commands;
 
 import abstractions.command.Command;
 import exceptions.MessagedRuntimeException;
-import io.Terminal;
+import script.ScriptReader;
 
 import java.io.FileNotFoundException;
 
+
 public class ExecuteScript extends Command {
-    private final Terminal terminal;
+    private final ScriptReader scriptReader;
     private String scriptPath;
 
-    public ExecuteScript(Terminal terminal) {
+
+    public ExecuteScript(ScriptReader scriptReader) {
         this.name = "execute_script file_name";
         this.description = "считать и исполнить скрипт из указанного файла";
-        this.terminal = terminal;
+        this.scriptReader = scriptReader;
     }
+
 
     @Override
     public void setArgs(String[] args) {
@@ -25,7 +28,7 @@ public class ExecuteScript extends Command {
     @Override
     public void execute() {
         try {
-            terminal.readScript(scriptPath);
+            scriptReader.readScript(scriptPath);
             result = String.format("Скрипт %s начал исполняться", scriptPath);
         } catch (FileNotFoundException e) {
             result = String.format("Файл со скриптом %s не найден", scriptPath);

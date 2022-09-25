@@ -1,4 +1,4 @@
-package io;
+package script;
 
 import java.io.Serializable;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package requestes.simple;
+package requestes.simple.argless;
 
 import abstractions.requests.CommandRequest;
 

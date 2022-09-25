@@ -7,13 +7,14 @@ import exceptions.MessagedRuntimeException;
 import io.Format;
 import io.Terminal;
 import io.TextFormatter;
+import script.UnixScriptedTerminal;
 
 import java.io.IOException;
 
 
 public class ClientExecutionManager {
     private final LocalHistory history;
-    private final Terminal terminal;
+    private final UnixScriptedTerminal terminal;
     private final CommandReader commandReader;
     private final LocalCommandManager localCommandManager;
     private final RequestsManager requestsManager;
@@ -22,7 +23,7 @@ public class ClientExecutionManager {
 
     public ClientExecutionManager() {
         this.history = new LocalHistory();
-        this.terminal = new Terminal();
+        this.terminal = new UnixScriptedTerminal();
         this.commandReader = new CommandReader(terminal);
         this.requestsManager = new RequestsManager(terminal);
         this.localCommandManager = new LocalCommandManager(terminal, history);

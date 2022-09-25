@@ -11,9 +11,9 @@ import requestes.creation.AddIfMaxRequest;
 import requestes.creation.AddRequest;
 import requestes.creation.RemoveByAddressRequest;
 import requestes.creation.UpdateRequest;
-import requestes.simple.FilterStartsWithNameRequest;
-import requestes.simple.RemoveByIdRequest;
-import requestes.simple.ArglessCommandRequest;
+import requestes.simple.arged.FilterStartsWithNameRequest;
+import requestes.simple.arged.RemoveByIdRequest;
+import requestes.simple.argless.ArglessCommandRequest;
 
 public class RequestsManager extends PrototypesManager<CommandRequest> {
     private final Terminal terminal;
