@@ -3,7 +3,6 @@ package server;
 import exceptions.ConnectionException;
 
 import java.io.IOException;
-import java.net.ConnectException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.net.SocketException;
@@ -27,19 +26,11 @@ public abstract class ServerNio {
         configureServerSocketChannel(host, port);
     }
 
-
     private void configureServerSocketChannel(String host, int port) throws IOException {
         SocketAddress serverSocketAddress = new InetSocketAddress(host, port);
         serverSocketChannel.socket().bind(serverSocketAddress);
         serverSocketChannel.configureBlocking(false);
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
-    }
-
-
-    public void run() throws IOException {
-        while (true) {
-            handleSelector();
-        }
     }
 
 

@@ -2,10 +2,10 @@ package app;
 
 import abstractions.command.Command;
 import abstractions.requests.CommandRequest;
+import client.ClientIo;
 import exceptions.DeserializationException;
 import exceptions.MessagedRuntimeException;
 import io.Format;
-import io.Terminal;
 import io.TextFormatter;
 import script.UnixScriptedTerminal;
 
@@ -18,7 +18,7 @@ public class ClientExecutionManager {
     private final CommandReader commandReader;
     private final LocalCommandManager localCommandManager;
     private final RequestsManager requestsManager;
-    private final Client client;
+    private final ClientIo client;
 
 
     public ClientExecutionManager() {
@@ -27,7 +27,7 @@ public class ClientExecutionManager {
         this.commandReader = new CommandReader(terminal);
         this.requestsManager = new RequestsManager(terminal);
         this.localCommandManager = new LocalCommandManager(terminal, history);
-        this.client = new Client();
+        this.client = new ClientIo();
         try {
             client.connect();
         } catch (IOException e) {

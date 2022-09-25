@@ -29,7 +29,6 @@ public class Server extends ServerNio {
     }
 
 
-    @Override
     public void run() throws IOException {
         System.out.println(TextFormatter.format("Сервер начал работу", Format.BOLD));
         while (true) {
@@ -42,7 +41,7 @@ public class Server extends ServerNio {
     @Override
     protected void handleRequestBuffer(ByteBuffer requestBuffer) {
         try {
-            CommandRequest request = commandRequestSerializer.deserializeFormByteArray(requestBuffer.array());
+            CommandRequest request = commandRequestSerializer.deserialize(requestBuffer.array());
             response = executeCommandFunction.apply(request);
         } catch (DeserializationException e) {
             throw new ConnectionException();
@@ -51,6 +50,6 @@ public class Server extends ServerNio {
 
     @Override
     protected ByteBuffer prepareResponseBuffer() {
-        return ByteBuffer.wrap(stringSerializer.serializeToByteArray(response));
+        return ByteBuffer.wrap(stringSerializer.serialize(response));
     }
 }
