@@ -14,7 +14,6 @@ public class FilterStartsWithName extends ArguedServerCommand<String> {
     public FilterStartsWithName(DataManager dataManager) {
         super(dataManager);
         this.name = "filter_starts_with_name name";
-        this.description = "вывести элементы, значение поля name которых начинается с заданной подстроки";
     }
 
 

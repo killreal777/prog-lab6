@@ -8,7 +8,6 @@ public class History extends Command {
 
     public History(ClientHistory history) {
         this.name = "history";
-        this.description = "вывести последние 10 команд (без их аргументов)";
         this.history = history;
     }
 

@@ -8,6 +8,7 @@ import register.CommandRecord;
 
 public class Help extends Command {
     public Help() {
+        this.name = "help";
         writeResult();
     }
 

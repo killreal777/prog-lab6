@@ -11,7 +11,6 @@ public class Head extends ServerCommand {
     public Head(DataManager dataManager) {
         super(dataManager);
         this.name = "head";
-        this.description = "вывести первый элемент коллекции";
     }
 
     @Override

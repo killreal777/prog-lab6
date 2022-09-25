@@ -14,7 +14,6 @@ public class ExecuteScript extends Command {
 
     public ExecuteScript(ScriptReader scriptReader) {
         this.name = "execute_script file_name";
-        this.description = "считать и исполнить скрипт из указанного файла";
         this.scriptReader = scriptReader;
     }
 

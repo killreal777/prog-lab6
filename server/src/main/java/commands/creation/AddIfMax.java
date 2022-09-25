@@ -10,8 +10,6 @@ public class AddIfMax extends Add {
     public AddIfMax(DataManager dataManager) {
         super(dataManager);
         this.name = "add_if_max {element}";
-        this.description = "добавить новый элемент в коллекцию, "
-                + "если его значение превышает значение наибольшего элемента этой коллекции";
     }
 
 

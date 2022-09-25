@@ -13,7 +13,6 @@ public class RemoveByID extends ArguedServerCommand<Integer> {
     public RemoveByID(DataManager dataManager) {
         super(dataManager);
         this.name = "remove_by_id id";
-        this.description = " удалить элемент из коллекции по его id";
     }
 
 

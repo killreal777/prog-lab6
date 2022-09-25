@@ -15,7 +15,6 @@ public class Update extends ArguedServerCommand<Organization> {
     public Update(DataManager dataManager) {
         super(dataManager);
         this.name = "update id {element}";
-        this.description = "обновить значение элемента коллекции, id которого равен заданному";
     }
 
 

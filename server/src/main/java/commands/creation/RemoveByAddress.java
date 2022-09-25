@@ -14,8 +14,6 @@ public class RemoveByAddress extends ArguedServerCommand<Address> {
     public RemoveByAddress(DataManager dataManager) {
         super(dataManager);
         this.name = "remove_any_by_official_address {officialAddress}";
-        this.description = "удалить из коллекции один элемент, "
-                + "значение поля officialAddress которого эквивалентно заданному";
     }
 
 

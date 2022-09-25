@@ -2,7 +2,6 @@ package commands.creation;
 
 import commands.abstractions.ArguedServerCommand;
 import data.management.DataManager;
-import exceptions.FieldDefinitionException;
 import io.Format;
 import io.TextFormatter;
 import model.Organization;
@@ -10,14 +9,13 @@ import model.Organization;
 import java.time.LocalDateTime;
 import java.util.PriorityQueue;
 
-public class Add extends ArguedServerCommand<Organization> {
 
+public class Add extends ArguedServerCommand<Organization> {
     public Add(DataManager dataManager) {
         super(dataManager);
         this.name = "add {element}";
-        this.description = "добавить новый элемент в коллекцию";
     }
-
+    
     @Override
     public void execute() {
         Organization organization = this.commandArgument;

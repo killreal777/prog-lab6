@@ -8,10 +8,10 @@ import java.util.function.Consumer;
 
 
 public class Show extends ServerCommand {
+    
     public Show(DataManager dataManager) {
         super(dataManager);
         this.name = "show";
-        this.description = "вывести в стандартный поток вывода все элементы коллекции в строковом представлении";
     }
 
     @Override

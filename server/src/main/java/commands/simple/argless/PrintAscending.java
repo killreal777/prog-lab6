@@ -11,7 +11,6 @@ public class PrintAscending extends ServerCommand {
     public PrintAscending(DataManager dataManager) {
         super(dataManager);
         this.name = "print_ascending";
-        this.description = "вывести элементы коллекции в порядке возрастания";
     }
 
     @Override

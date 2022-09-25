@@ -11,7 +11,6 @@ public class Save extends ServerCommand {
     public Save(DataManager dataManager) {
         super(dataManager);
         this.name = "save";
-        this.description = "сохранить коллекцию в файл";
     }
 
     @Override

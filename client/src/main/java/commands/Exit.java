@@ -5,7 +5,6 @@ import abstractions.command.Command;
 public class Exit extends Command {
     public Exit() {
         this.name = "exit";
-        this.description = "завершить программу (без сохранения в файл)";
     }
 
     @Override

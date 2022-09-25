@@ -10,7 +10,6 @@ public class Clear extends ServerCommand {
     public Clear(DataManager dataManager) {
         super(dataManager);
         this.name = "clear";
-        this.description = "очистить коллекцию";
     }
 
     @Override
