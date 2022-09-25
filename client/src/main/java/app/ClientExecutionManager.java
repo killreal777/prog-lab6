@@ -2,7 +2,7 @@ package app;
 
 import abstractions.command.Command;
 import abstractions.requests.CommandRequest;
-import client.ClientIo;
+import client.Client;
 import exceptions.DeserializationException;
 import exceptions.MessagedRuntimeException;
 import io.Format;
@@ -18,7 +18,7 @@ public class ClientExecutionManager {
     private final CommandReader commandReader;
     private final LocalCommandManager localCommandManager;
     private final RequestsManager requestsManager;
-    private final ClientIo client;
+    private final Client client;
 
 
     public ClientExecutionManager() {
@@ -27,7 +27,7 @@ public class ClientExecutionManager {
         this.commandReader = new CommandReader(terminal);
         this.requestsManager = new RequestsManager(terminal);
         this.localCommandManager = new LocalCommandManager(terminal, history);
-        this.client = new ClientIo();
+        this.client = new Client();
         try {
             client.connect();
         } catch (IOException e) {
@@ -88,10 +88,6 @@ public class ClientExecutionManager {
         CommandRequest request = requestsManager.clonePrototype(commandName);
         request.setCommandArgs(commandArgs);
         history.addRequest(request);
-        try {
-            return client.interact(request);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        return client.executeCommandOnServer(request);
     }
 }

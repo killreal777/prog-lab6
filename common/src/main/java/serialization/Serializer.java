@@ -18,9 +18,13 @@ public class Serializer<T extends Serializable> {
     }
 
     public T deserialize(byte[] byteArray) {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArray);
+        return deserialize(byteArrayInputStream);
+    }
+
+    public T deserialize(InputStream inputStream) {
         try {
-            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArray);
-            ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+            ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
             return (T) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             throw new DeserializationException();

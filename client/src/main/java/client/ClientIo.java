@@ -1,23 +1,24 @@
 package client;
 
 import java.io.IOException;
-import java.net.InetSocketAddress;
+import java.io.InputStream;
 import java.net.Socket;
 
 
 public abstract class ClientIo {
-    private final Socket socket;
-    private final InetSocketAddress inetSocketAddress;
+    private Socket socket;
+    private final String hostname;
+    private final int port;
 
 
     public ClientIo(String hostname, int port) {
-        this.socket = new Socket();
-        this.inetSocketAddress = new InetSocketAddress(hostname, port);
+        this.hostname = hostname;
+        this.port = port;
     }
 
 
     public void connect() throws IOException {
-        socket.connect(inetSocketAddress);
+        this.socket = new Socket(hostname, port);
     }
 
 
@@ -25,7 +26,7 @@ public abstract class ClientIo {
         socket.getOutputStream().write(request);
     }
 
-    protected byte[] getResponse() throws IOException {
-        return socket.getInputStream().readAllBytes();
+    protected InputStream getResponse() throws IOException {
+        return socket.getInputStream();
     }
 }
