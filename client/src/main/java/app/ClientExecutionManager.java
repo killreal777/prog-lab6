@@ -2,54 +2,39 @@ package app;
 
 import abstractions.command.Command;
 import abstractions.requests.CommandRequest;
-import client.Client;
-import exceptions.DeserializationException;
+import client.Connector;
 import exceptions.MessagedRuntimeException;
 import io.Format;
 import io.TextFormatter;
 import script.UnixScriptedTerminal;
 
-import java.io.IOException;
+import java.util.Optional;
 
 
 public class ClientExecutionManager {
-    private final LocalHistory history;
+    private final ClientHistory history;
     private final UnixScriptedTerminal terminal;
     private final CommandReader commandReader;
     private final LocalCommandManager localCommandManager;
     private final RequestsManager requestsManager;
-    private final Client client;
+    private final Connector connector;
 
 
     public ClientExecutionManager() {
-        this.history = new LocalHistory();
+        this.history = new ClientHistory();
         this.terminal = new UnixScriptedTerminal();
         this.commandReader = new CommandReader(terminal);
         this.requestsManager = new RequestsManager(terminal);
         this.localCommandManager = new LocalCommandManager(terminal, history);
-        this.client = new Client();
-        try {
-            client.connect();
-        } catch (IOException e) {
-            reconnect();
-        }
+        this.connector = new Connector(terminal);
+        
     }
 
 
-    private void reconnect() {
-        try {
-            terminal.print("Сервер недоступен, введите exit для выхода или reconnect для переподключения");
-            String input = terminal.readLineEntire();
-            while (!(input.equals("exit") || input.equals("reconnect")))
-                input = terminal.readLineEntire("Введите exit для выхода или reconnect для переподключения: ");
-            if (input.equals("exit"))
-                executeCommand(input, new String[0]);
-            else
-                client.connect();
-            System.out.println(TextFormatter.format("Соединение установлено", Format.GREEN));
-        } catch (IOException e) {
-            reconnect();
-        }
+    public void run() {
+        terminal.print("Для вывода справки по доступным командам введите help");
+        while (true)
+            executeNextCommand();
     }
 
     
@@ -58,36 +43,36 @@ public class ClientExecutionManager {
             CommandReader.UserInput input = commandReader.readCommand();
             String name = input.getCommandName();
             String[] args = input.getCommandArgs();
-            String commandResult = executeCommand(name, args);
-            terminal.print(commandResult);
-        } catch (IOException | DeserializationException e) {
-            reconnect();
+            executeCommand(name, args);
         } catch (MessagedRuntimeException e) {
             terminal.print(e.getMessage());
         }
     }
 
-    private String executeCommand(String commandName, String[] commandArgs) throws IOException {
+    private void executeCommand(String commandName, String[] commandArgs) {
         if (localCommandManager.contains(commandName))
-            return executeCommandOnClient(commandName, commandArgs);
+            executeLocalCommand(commandName, commandArgs);
         else if (requestsManager.contains(commandName))
-            return executeCommandOnServer(commandName, commandArgs);
+            executeServerCommand(commandName, commandArgs);
         else
-            return TextFormatter.format("Команда не найдена", Format.RED);
+            terminal.print(TextFormatter.format("Команда не найдена", Format.RED));
     }
 
-    private String executeCommandOnClient(String commandName, String[] commandArgs) {
+    private void executeLocalCommand(String commandName, String[] commandArgs) {
         Command command = localCommandManager.clonePrototype(commandName);
-        history.addCommand(command);
         command.setArgs(commandArgs);
         command.execute();
-        return command.getResult();
+        terminal.print(command.getResult());
+        history.addCommand(command);
     }
 
-    private String executeCommandOnServer(String commandName, String[] commandArgs) throws IOException {
+    private void executeServerCommand(String commandName, String[] commandArgs) {
         CommandRequest request = requestsManager.clonePrototype(commandName);
         request.setCommandArgs(commandArgs);
-        history.addRequest(request);
-        return client.executeCommandOnServer(request);
+        Optional<String> result = connector.executeCommandOnServer(request);
+        if (result.isPresent()) {
+            terminal.print(result.get());
+            history.addRequest(request);
+        }
     }
 }

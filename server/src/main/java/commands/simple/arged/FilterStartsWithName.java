@@ -20,10 +20,9 @@ public class FilterStartsWithName extends ArguedServerCommand<String> {
 
     @Override
     public void execute() {
-        Consumer<String> writeResultLine = (line) -> result = result + line + "\n";
         Predicate<Organization> startsWithName = (org) -> org.getName().startsWith(commandArgument);
         dataManager.getCollection().stream().sorted().filter(startsWithName).
-                map(Organization::toString).forEach(writeResultLine);
+                map(Organization::toString).forEach(this::writeResult);
         if (result.equals(""))
             setBadResult();
     }

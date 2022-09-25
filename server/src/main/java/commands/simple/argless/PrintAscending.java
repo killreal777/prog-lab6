@@ -16,8 +16,7 @@ public class PrintAscending extends ServerCommand {
 
     @Override
     public void execute() {
-        Consumer<String> writeResultLine = (line) -> result = result + line + "\n";
-        dataManager.getCollection().stream().sorted().map(Organization::toString).forEach(writeResultLine);
+        dataManager.getCollection().stream().sorted().map(Organization::toString).forEach(this::writeResult);
         if (result.equals(""))
             result = "Коллекция пуста";
     }

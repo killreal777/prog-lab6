@@ -28,13 +28,15 @@ public abstract class Command extends CloneablePrototype {
         if (args.length != amount)
             throw new ArgumentAmountException(args.length, amount);
     }
+    
+    public void writeResult(String newResult) {
+        if (!result.equals(""))
+            result = result + "\n";
+        result = result + newResult;
+    }
 
     public String getResult() {
         return result;
-    }
-
-    public String getHelp() {
-        return String.format("%s: %s", name, description);
     }
 
     @Override

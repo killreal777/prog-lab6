@@ -7,10 +7,10 @@ import abstractions.requests.CommandRequest;
  * Class for storing last 10 executed Commands
  */
 
-public class LocalHistory {
+public class ClientHistory {
     private final Object[] history;
 
-    LocalHistory() {
+    ClientHistory() {
         this.history = new Object[10];
     }
 

@@ -1,12 +1,12 @@
 package commands;
 
 import abstractions.command.Command;
-import app.LocalHistory;
+import app.ClientHistory;
 
 public class History extends Command {
-    private final LocalHistory history;
+    private final ClientHistory history;
 
-    public History(LocalHistory history) {
+    public History(ClientHistory history) {
         this.name = "history";
         this.description = "вывести последние 10 команд (без их аргументов)";
         this.history = history;
