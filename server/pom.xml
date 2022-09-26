@@ -19,38 +19,34 @@
             <artifactId>common</artifactId>
             <version>1.0</version>
         </dependency>
+
+        <!-- For JAXB -->
         <dependency>
-            <!-- For JAXB -->
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-core</artifactId>
-            <version>4.0.0</version>
+            <version>4.0.1</version>
         </dependency>
         <dependency>
-            <!-- For JAXB -->
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.4.0-b180830.0359</version>
         </dependency>
         <dependency>
-            <!-- For JAXB -->
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
-            <version>4.0.0</version>
+            <version>4.0.1</version>
         </dependency>
         <dependency>
-            <!-- For JAXB -->
             <groupId>javax.activation</groupId>
             <artifactId>activation</artifactId>
             <version>1.1.1</version>
         </dependency>
         <dependency>
-            <!-- For JAXB -->
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
             <version>4.0.0</version>
         </dependency>
         <dependency>
-            <!-- For JAXB -->
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>4.0.0</version>
